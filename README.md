@@ -20,3 +20,10 @@
 
 ## Description
 A website that allows users to signup/login and search for pokemon and superhero stats, as well as view random dad jokes told between them. Jokes can be favorited and later found in the user's profile.
+
+## APIs
+  - [Pokeapi](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_pokeapi.md)
+  - [Qrtag](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_QR-code-gen.md)
+  - [Superhero API](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_superheroAPI.md)
+  - [Dad joke API](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_DadJokes.md)
+  - [Love calculator API](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_LoveCalculator.md)
