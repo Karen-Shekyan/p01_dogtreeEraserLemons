@@ -1,5 +1,5 @@
 import sqlite3
-db = sqlite3.connect("Database.db", check_same_thread=False)
+db = sqlite3.connect("database.db", check_same_thread=False)
 global c
 c = db.cursor()
 c.execute("CREATE TABLE if not exist users(username TEXT, password TEXT, favorite TEXT)")
@@ -30,4 +30,23 @@ def signup(username, password):
 def remove_user(username):
     c.execute(f'DELETE FROM main WHERE username = "{username}"')
     db.commit() #save changes
+    
+# to verify if the password given is right to login
+def login(username, password):
+    if(username_in_system(username)):
+        if(select_from("users", "password", username, "username") == password):
+            return True
+    return False
 
+def add_joke_into_jokedb(joke_id, content, character):
+    c.execute(f"INSERT INTO jokes VALUES (?,?,?)", (joke_id, content, character))
+    print("Joke added")
+    db.commit() #save changes
+
+def get_list_of_saved_jokes(username):
+    jokes = list(c.execute(f"SELECT favorite FROM users WHERE username = '{username}'").fetchall())
+    returnlist = []
+    for i in jokes:
+        returnlist.append(i[0])
+    return returnlist
+    

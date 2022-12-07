@@ -34,3 +34,8 @@ karenS -- 2022-12-7 7:40
       - *Ensure site map displays correctly*
       - Clarify use of templates
 ==============================================================
+mahirR -- 2022-12-7 12:30 PM
+--------------------------------------------------------------
+  - Initialized the __init__.py file
+    - created a flask app instance
+==============================================================
