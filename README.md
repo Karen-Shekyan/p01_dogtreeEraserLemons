@@ -26,4 +26,3 @@ A website that allows users to signup/login and search for pokemon and superhero
   - [Qrtag](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_QR-code-gen.md)
   - [Superhero API](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_superheroAPI.md)
   - [Dad joke API](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_DadJokes.md)
-  - [Love calculator API](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_LoveCalculator.md)

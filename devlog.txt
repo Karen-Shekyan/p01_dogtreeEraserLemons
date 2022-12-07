@@ -1,28 +1,12 @@
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-USAGE:
-* Replace all fields, angle brackets included, with specified info.
-  eg, pd <pd#> --> pd 3
-* Delete these instructions once all teammates understand usage.
-  (from tilde bar above to tilde bar below)
-* rename this file devlog.txt
-
-devlog--
-Use keyboard shortcut to jump to end,
- replicate entry template, (Ctrl-Shift up x5, Ctrl-X, Ctrl-V x2)
- modify appropriately.
-Each entry should begin with the following format:
- firstL -- TIMESTAMP\n
-e.g.:
-clydeS -- 2999-12-31 23:59
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-<Team Name (minus "team")>
-<Member Bubbles>
-<Member Buttercup>
-<Member Blossom>
-pd <pd#>
+DogtreeEraserLemons
+Karen Shekyan
+Mahir Riki
+Kevin Liu
+Ian Jiang
+pd 7
 ---------------------
-<Project Title/Description>
+P01 -- ArRESTed Development
+
 
 
  ______   ______   __   __   __       ______   _______
@@ -36,7 +20,13 @@ pd <pd#>
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
-fristL -- TIMESTAMP
+karenS -- 2022-12-7 7:40
 --------------------------------------------------------------
-<Thing fristL did.>
+  - Updated design doc w/ feedback:
+      - List APIs used
+      - Explain why chosen framework was chosen
+      - Clarify purpose and connection of components
+      - Clarify database
+      - *Ensure site map displays correctly*
+      - Clarify use of templates
 ==============================================================
