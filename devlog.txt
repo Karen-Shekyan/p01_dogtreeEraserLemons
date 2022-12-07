@@ -7,7 +7,11 @@ pd 7
 ---------------------
 P01 -- ArRESTed Development
 
-
+Description:
+A website that allows users to signup/login and search for
+pokemon and superhero stats, as well as view random dad jokes
+told between them. Jokes can be favorited and later found in
+the user's profile.
 
  ______   ______   __   __   __       ______   _______
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
