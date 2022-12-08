@@ -2,8 +2,8 @@ import sqlite3
 db = sqlite3.connect("database.db", check_same_thread=False)
 global c
 c = db.cursor()
-c.execute("CREATE TABLE if not exist users(username TEXT, password TEXT, favorite TEXT)")
-c.execute("CREATE TABLE if not exist jokes(joke_id INTEGER, content TEXT, character TEXT)")
+c.execute("CREATE TABLE if not exists users(username TEXT, password TEXT, favorite TEXT)")
+c.execute("CREATE TABLE if not exists jokes(joke_id INTEGER, content TEXT, character TEXT)")
 
 def select_from(table, data_want, datagive, datatype_give): #general method that can be used to get data easier
     temp = ((c.execute(f"SELECT {data_want} FROM {table} WHERE {datatype_give} = '{datagive}'")).fetchall())
