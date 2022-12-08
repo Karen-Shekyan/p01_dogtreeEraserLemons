@@ -45,13 +45,8 @@ karenS -- 2022-12-8 8:20
 
 karenS -- 2022-12-8 1:00
 --------------------------------------------------------------
-  - Created navbar
-    - Figured out proper alignment
-  - Updated __init__ with /home route
+  - Created navbar with proper alignment
+  - Created temporary /home route for testing
+  - White-boarded all templates to be implemented
 
-==============================================================
-mahirR -- 2022-12-7 12:30 PM
---------------------------------------------------------------
-  - Initialized the __init__.py file
-    - created a flask app instance
 ==============================================================
