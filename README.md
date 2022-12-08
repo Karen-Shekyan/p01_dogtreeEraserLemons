@@ -26,3 +26,25 @@ A website that allows users to signup/login and search for pokemon and superhero
   - [Qrtag](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_QR-code-gen.md)
   - [Superhero API](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_superheroAPI.md)
   - [Dad joke API](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_DadJokes.md)
+  
+  ## Instructions for Running:
+  
+  ### Clone the repo:
+  ```
+  git@github.com:Karen-Shekyan/p01_dogtreeEraserLemons.git
+  ```
+  
+  ### Start up a Python Virtual Environment:
+  ```python
+  python3 -m venv venv
+  ```
+  
+  ### Start up the Virtual Environment and install the requirements:
+  ```python
+  pip install -r requirements.txt
+  ```
+  
+  ### Run the Program:
+  ```python
+  python3 __init__.py
+  ```
