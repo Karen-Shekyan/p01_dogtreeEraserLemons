@@ -43,4 +43,10 @@ karenS -- 2022-12-8 8:20
   - Created basic login template
   - Updated / route to render login
 
+karenS -- 2022-12-8 1:00
+--------------------------------------------------------------
+  - Created navbar
+    - Figured out proper alignment
+  - Updated __init__ with /home route
+
 ==============================================================
