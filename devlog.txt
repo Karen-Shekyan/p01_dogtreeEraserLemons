@@ -24,7 +24,7 @@ the user's profile.
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
-karenS -- 2022-12-7 7:40
+karenS -- 2022-12-7 7:40 AM
 --------------------------------------------------------------
   - Updated design doc w/ feedback:
       - List APIs used
@@ -34,16 +34,19 @@ karenS -- 2022-12-7 7:40
       - *Ensure site map displays correctly*
       - Clarify use of templates
 
-mahirR -- 2022-12-7 1:00
+mahirR -- 2022-12-7 12:30 PM
 --------------------------------------------------------------
-  - Initialized app (__init__.py)
+- Initialized the __init__.py file
+    - Created a flask app instance
 
-karenS -- 2022-12-8 8:20
+==============================================================
+
+karenS -- 2022-12-8 8:20 AM
 --------------------------------------------------------------
   - Created basic login template
   - Updated / route to render login
 
-karenS -- 2022-12-8 1:00
+karenS -- 2022-12-8 1:00 PM
 --------------------------------------------------------------
   - Created navbar with proper alignment
   - Created temporary /home route for testing
