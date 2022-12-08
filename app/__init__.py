@@ -1,6 +1,6 @@
 from flask import Flask, render_template, session, request
 import requests, os
-from database import *
+import database
 app = Flask(__name__)
 secret_key = os.urandom(32)
 
@@ -19,7 +19,8 @@ def authenticate():
         user = request.args['username']
         pw = request.args['pass']
 
+    return render_template('login.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+	app.debug = True
+	app.run()
