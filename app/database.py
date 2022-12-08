@@ -49,4 +49,3 @@ def get_list_of_saved_jokes(username):
     for i in jokes:
         returnlist.append(i[0])
     return returnlist
-    
