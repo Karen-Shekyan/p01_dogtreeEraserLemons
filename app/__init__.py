@@ -6,7 +6,7 @@ secret_key = os.urandom(32)
 
 @app.route('/')
 def login():
-    return render_template('login.html')
+    return render_template('home.html')
 
 if __name__ == '__main__':
 	app.debug = True
