@@ -43,9 +43,10 @@ karenS -- 2022-12-8 8:20
   - Created basic login template
   - Updated / route to render login
 
-==============================================================
-mahirR -- 2022-12-7 12:30 PM
+karenS -- 2022-12-8 1:00
 --------------------------------------------------------------
-  - Initialized the __init__.py file
-    - created a flask app instance
+  - Created navbar with proper alignment
+  - Created temporary /home route for testing
+  - White-boarded all templates to be implemented
+
 ==============================================================

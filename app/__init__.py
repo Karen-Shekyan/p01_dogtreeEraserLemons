@@ -10,6 +10,11 @@ def login():
         return render_template('home.html')
     return render_template('login.html')
 
+# TEMPORARY ROUTE FOR TESTING
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
 @app.route('/auth')
 def authenticate():
     if request.method == 'POST':
