@@ -11,7 +11,7 @@ def log_in():
         return render_template('home.html')
     return render_template('login.html')
 
-@app.route('/login', methods = ['GET', "POST"])
+@app.route('/login', methods = ["POST"])
 def authenticate():
     if 'username' in session:
         return render_template('home.html')
