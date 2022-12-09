@@ -14,17 +14,18 @@ def select_from(table, data_want, datagive, datatype_give):
         return 0
 
 def username_in_system(username):
-    temp = list(c.execute("SELECT username FROM user").fetchall())
+    temp = list(c.execute("SELECT username FROM users").fetchall())
     for element in temp:
         for element2 in element:
             if username == element2:
                 return True
+    return False
 
 def signup(username, password, email):
     if(username_in_system(username)):
         return False
     else:
-        c.execute("INSERT INTO user VALUES (?,?,?)", (username, password, email))
+        c.execute("INSERT INTO users VALUES (?,?,?,'')", (username, password, email))
     db.commit()
     return True #save changes
 
