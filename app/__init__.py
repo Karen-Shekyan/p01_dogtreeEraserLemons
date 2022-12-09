@@ -11,7 +11,7 @@ def log_in():
         return render_template('home.html')
     return render_template('login.html')
 
-@app.route('/login', methods = ['GET', "POST"])
+@app.route('/login', methods = ["POST"])
 def authenticate():
     if 'username' in session:
         return render_template('home.html')
@@ -30,7 +30,7 @@ def authenticate():
     else:
         return render_template('login.html', errorTextL= "Please enter a valid username and password")
 
-@app.route('/signup', methods = ['GET', "POST"])
+@app.route('/signup', methods = ["POST"])
 def sign_up():
     if request.method == 'POST':
         user = request.form['username']
@@ -100,7 +100,7 @@ def display(hero_id):
     image = data["images"]["md"]
     return render_template('hero.html', Information = bio, picture = image, stats = [powerstats])
 
-@app.route('/logout', methods = ['GET', 'POST'])
+@app.route('/logout', methods = ['POST'])
 def logout():
     if 'username' in session:
         session.pop('username')
