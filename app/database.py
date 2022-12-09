@@ -32,7 +32,7 @@ def signup(username, password, email):
 def remove_user(username):
     c.execute(f'DELETE FROM main WHERE username = "{username}"')
     db.commit() #save changes
-    
+
 # to verify if the password given is right to login
 def login(username, password):
     if(username_in_system(username)):
@@ -63,4 +63,3 @@ def add_joke_to_user(username, joke_id):
             db.commit() #save changes
             return True
     return False
-    
