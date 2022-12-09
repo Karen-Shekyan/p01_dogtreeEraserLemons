@@ -13,6 +13,8 @@ def log_in():
 
 @app.route('/login', methods = ['GET', "POST"])
 def authenticate():
+    if 'username' in session:
+        return render_template('home.html')
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
@@ -92,7 +94,7 @@ def display(hero_id):
     if groupAffiliation == "-":
         groupAffiliation = "with no one"
     else:
-        groupAffiliation = "as a" + groupAffiliation
+        groupAffiliation = "as a " + groupAffiliation
     bio = f'{FullName} or {name} is a {alignedment} aligned character {placeOfBirth}. {name} has the appearance of a {race}{gender} {height} {weight}with {eyeColor} eyes and {hairColor}. {pronoun} works as a {occupation}. {pronoun} first appeared in {firstAppearance} by {publisher}. {pronoun} is affiliated {groupAffiliation}.'
     image = data["images"]["md"]
     return render_template('hero.html', Information = bio, picture = image, stats = [powerstats], title = name)
