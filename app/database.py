@@ -4,6 +4,7 @@ global c
 c = db.cursor()
 c.execute("CREATE TABLE if not exists users(username TEXT, password TEXT, email TEXT, favorite TEXT)")
 c.execute("CREATE TABLE if not exists jokes(joke_id INTEGER, content TEXT, character TEXT)")
+c.execute("CREATE TABLE if not exists heroes(hero_id INTEGER, name TEXT, powerstats TEXT, bio TEXT)")
 
 # general method that can be used to get data easier
 def select_from(table, data_want, datagive, datatype_give):
@@ -62,4 +63,32 @@ def add_joke_to_user(username, joke_id):
             c.execute(f"UPDATE users SET favorite = '{joke_id}' WHERE username = '{username}'")
             db.commit() #save changes
             return True
+    return False
+
+def add_hero(hero_id, name, powerstats, bio):
+    if select_from("heroes", "hero_id", hero_id, "hero_id") == 0:
+        c.execute(f"INSERT INTO heroes VALUES (?,?,?,?)", (hero_id, name, powerstats, bio))
+        db.commit() #save changes
+        print("Hero added")
+    else:
+        print("Hero already in database")
+        
+def hero_in_db(hero_id):
+    if select_from("heroes", "hero_id", hero_id, "hero_id") != 0:
+        return True
+    return False
+
+def get_hero_name(hero_id):
+    if hero_in_db(hero_id):
+        return c.execute(f"SELECT name FROM heroes WHERE hero_id = '{hero_id}'").fetchall()[0][0]
+    return False
+
+def get_hero_powerstats(hero_id):
+    if hero_in_db(hero_id):
+        return c.execute(f"SELECT powerstats FROM heroes WHERE hero_id = '{hero_id}'").fetchall()[0][0]
+    return False
+
+def get_hero_bio(hero_id):
+    if hero_in_db(hero_id):
+        return c.execute(f"SELECT bio FROM heroes WHERE hero_id = '{hero_id}'").fetchall()[0][0]
     return False
