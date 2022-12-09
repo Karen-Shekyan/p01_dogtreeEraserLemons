@@ -13,6 +13,8 @@ def log_in():
 
 @app.route('/login', methods = ['GET', "POST"])
 def authenticate():
+    if 'username' in session:
+        return render_template('home.html')
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
