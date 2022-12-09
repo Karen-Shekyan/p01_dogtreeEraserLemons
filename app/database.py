@@ -1,10 +1,19 @@
-import sqlite3
+import sqlite3, apimethods
+
 db = sqlite3.connect("database.db", check_same_thread=False)
 global c
 c = db.cursor()
+
+# making tables
 c.execute("CREATE TABLE if not exists users(username TEXT, password TEXT, email TEXT, favorite TEXT)")
-c.execute("CREATE TABLE if not exists jokes(joke_id INTEGER, content TEXT, character TEXT)")
-c.execute("CREATE TABLE if not exists heroes(hero_id INTEGER, name TEXT, powerstats TEXT, bio TEXT)")
+c.execute("CREATE TABLE if not exists jokes(joke_id INTEGER PRIMARY KEY, content TEXT, character TEXT)")
+c.execute("CREATE TABLE if not exists heroes(hero_id INTEGER PRIMARY KEY, name TEXT, powerstats TEXT, bio TEXT, image_link TEXT)")
+c.execute("CREATE TABLE if not exists pokemon(pokemon_id INTEGER PRIMARY KEY, name TEXT, poke_type TEXT, stats TEXT, bio TEXT, image_link TEXT)")
+
+# to execute heroes table with all heroes
+# for i in range(1, 732):
+#     hero = apimethods.hero_info(i)
+#     c.execute("INSERT INTO heroes VALUES (?,?,?,?,?)", (i, str(hero[0]), str(hero[1]), str(hero[2]), str(hero[3])))
 
 # general method that can be used to get data easier
 def select_from(table, data_want, datagive, datatype_give):
@@ -65,14 +74,14 @@ def add_joke_to_user(username, joke_id):
             return True
     return False
 
-def add_hero(hero_id, name, powerstats, bio):
-    if select_from("heroes", "hero_id", hero_id, "hero_id") == 0:
-        c.execute(f"INSERT INTO heroes VALUES (?,?,?,?)", (hero_id, name, powerstats, bio))
-        db.commit() #save changes
-        print("Hero added")
-    else:
-        print("Hero already in database")
-        
+# def add_hero(hero_id, name, powerstats, bio):
+#     if select_from("heroes", "hero_id", hero_id, "hero_id") == 0:
+#         c.execute(f"INSERT INTO heroes VALUES (?,?,?,?)", (hero_id, name, powerstats, bio))
+#         db.commit() #save changes
+#         print("Hero added")
+#     else:
+#         print("Hero already in database")
+
 def hero_in_db(hero_id):
     if select_from("heroes", "hero_id", hero_id, "hero_id") != 0:
         return True
@@ -91,4 +100,38 @@ def get_hero_powerstats(hero_id):
 def get_hero_bio(hero_id):
     if hero_in_db(hero_id):
         return c.execute(f"SELECT bio FROM heroes WHERE hero_id = '{hero_id}'").fetchall()[0][0]
+    return False
+
+# do not use this yet; might have an initialization of all the pokemon into the pokemon table so no point of this method
+def add_pokemon(pokemon_id, name, poke_type, stats, bio):
+    if select_from("pokemon", "pokemon_id", pokemon_id, "pokemon_id") == 0:
+        c.execute(f"INSERT INTO pokemon VALUES (?,?,?,?)", (pokemon_id, name, poke_type, stats, bio))
+        db.commit()
+        print("Pokemon added")
+    else:
+        print("Pokemon already in database")
+
+def pokemon_in_db(pokemon_id):
+    if select_from("pokemon", "pokemon_id", pokemon_id, "pokemon_id") != 0:
+        return True
+    return False
+
+def get_pokemon_name(pokemon_id):
+    if pokemon_in_db(pokemon_id):
+        return c.execute(f"SELECT name FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
+    return False
+
+def get_pokemon_poketype(pokemon_id):
+    if pokemon_in_db(pokemon_id):
+        return c.execute(f"SELECT poke_type FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
+    return False
+
+def get_pokemon_stats(pokemon_id):
+    if pokemon_in_db(pokemon_id):
+        return c.execute(f"SELECT stats FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
+    return False
+
+def get_pokemon_image(pokemon_id):
+    if pokemon_in_db(pokemon_id):
+        return c.execute(f"SELECT image_link FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
     return False
