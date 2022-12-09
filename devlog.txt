@@ -62,3 +62,9 @@ ianJ -- 2022-12-8 7:40 PM
     - some of the functions referred to the table 'user', not 'users'
     - signup function only inputted 3 values even though users has 4 columns --> made the function set favorites to empty string
   - added logout feature
+--------------------------------------------------------------
+kevinL -- 2022-12-8 11:14 PM
+  - added templates for information slides
+  - researched ways to implement search
+  - added routes to information pages
+
