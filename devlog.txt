@@ -53,3 +53,12 @@ karenS -- 2022-12-8 1:00 PM
   - White-boarded all templates to be implemented
 
 ==============================================================
+
+ianJ -- 2022-12-8 7:40 PM
+--------------------------------------------------------------
+  - implemented cookies/sessions
+  - added email text box for signup
+  - fixed bugs in database.py
+    - some of the functions referred to the table 'user', not 'users'
+    - signup function only inputted 3 values even though users has 4 columns --> made the function set favorites to empty string
+  - added logout feature
