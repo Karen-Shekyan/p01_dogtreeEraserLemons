@@ -45,8 +45,8 @@ def sign_up():
 
 @app.route('/hero/<int:hero_id>')
 def display(hero_id):
-    url = f"https://akabab.github.io/superhero-api/api/id/{hero_id}.json" 
-    print(url)  
+    url = f"https://akabab.github.io/superhero-api/api/id/{hero_id}.json"
+    print(url)
     data = json.loads(requests.get(url).text)
     print(data)
     print("----------------------------------")
@@ -57,7 +57,7 @@ def display(hero_id):
     placeOfBirth = data["biography"]["placeOfBirth"]
     if placeOfBirth == "-":
         placeOfBirth = ""
-    else: 
+    else:
         placeOfBirth = "borned in "+placeOfBirth
     gender = data["appearance"]["gender"]
     if(gender == "Male"):
@@ -95,14 +95,14 @@ def display(hero_id):
         groupAffiliation = "as a" + groupAffiliation
     bio = f'{FullName} or {name} is a {alignedment} aligned character {placeOfBirth}. {name} has the appearance of a {race}{gender} {height} {weight}with {eyeColor} eyes and {hairColor}. {pronoun} works as a {occupation}. {pronoun} first appeared in {firstAppearance} by {publisher}. {pronoun} is affiliated {groupAffiliation}.'
     image = data["images"]["md"]
-    return render_template('hero.html', Information = bio, picture = image, stats = [powerstats])
+    return render_template('hero.html', Information = bio, picture = image, stats = [powerstats], title = name)
 
 @app.route('/logout', methods = ['GET', 'POST'])
 def logout():
     if 'username' in session:
         session.pop('username')
     return redirect('http://127.0.0.1:5000/')
-    
+
 if __name__ == '__main__':
 	app.debug = True
 	app.run()
