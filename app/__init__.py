@@ -48,13 +48,14 @@ def sign_up():
 @app.route('/hero/<int:hero_id>')
 def display(hero_id):
     url = f"https://akabab.github.io/superhero-api/api/id/{hero_id}.json"
-    print(url)
+    #print(url)  
     data = json.loads(requests.get(url).text)
-    print(data)
-    print("----------------------------------")
+    #print(data)
+    #print("----------------------------------")
     FullName = data["biography"]["fullName"]
     name = data["name"]
     powerstats = data["powerstats"]
+    #print(powerstats)
     alignedment = data["biography"]["alignment"]
     placeOfBirth = data["biography"]["placeOfBirth"]
     if placeOfBirth == "-":
