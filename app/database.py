@@ -11,9 +11,9 @@ c.execute("CREATE TABLE if not exists heroes(hero_id INTEGER PRIMARY KEY, name T
 c.execute("CREATE TABLE if not exists pokemon(pokemon_id INTEGER PRIMARY KEY, name TEXT, poke_type TEXT, stats TEXT, bio TEXT, image_link TEXT)")
 
 # to execute heroes table with all heroes
-for i in range(1, 732):
-    hero = apimethods.hero_info(i)
-    c.execute("INSERT INTO heroes VALUES (?,?,?,?,?)", (i, str(hero["name"]), str(hero["powerstats"]), str(hero["bio"]), str(hero["image_link"])))
+# for i in range(1, 732):
+#     hero = apimethods.hero_info(i)
+#     c.execute("INSERT INTO heroes VALUES (?,?,?,?,?)", (i, str(hero[0]), str(hero[1]), str(hero[2]), str(hero[3])))
 
 # general method that can be used to get data easier
 def select_from(table, data_want, datagive, datatype_give):
