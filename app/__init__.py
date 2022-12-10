@@ -11,7 +11,7 @@ def log_in():
         return render_template('home.html')
     return render_template('login.html')
 
-@app.route('/login', methods = ["POST"])
+@app.route('/login', methods = ["GET", "POST"])
 def authenticate():
     if 'username' in session:
         return render_template('home.html')
@@ -32,6 +32,8 @@ def authenticate():
 
 @app.route('/signup', methods = ["POST"])
 def sign_up():
+    if 'username' in session:
+        return render_template('home.html')
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
@@ -100,12 +102,22 @@ def display(hero_id):
     image = data["images"]["md"]
     return render_template('hero.html', Information = bio, picture = image, stats = [powerstats])
 
-@app.route('/logout', methods = ['POST'])
+@app.route('/logout', methods = ['GET', 'POST'])
 def logout():
     if 'username' in session:
         session.pop('username')
     return redirect('http://127.0.0.1:5000/')
-    
+
+@app.route('/profile')
+def userprofile():
+    if 'username' not in session:
+        return redirect('http://127.0.0.1:5000/')
+    return render_template('user_profile.html', username=session['username'], favorites=get_list_of_saved_jokes(session['username']))
+
+@app.route('/profile/<user>')
+def qruserprofile(user):
+    return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user))
+
 if __name__ == '__main__':
 	app.debug = True
 	app.run()
