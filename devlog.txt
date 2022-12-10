@@ -88,3 +88,4 @@ ianJ -- 2022-12-10 1:00 AM
     - qr codes lead to the user's profile
     - you don't need to be logged in to view the profile
   - fixed bugs regarding home button and sessions
+==============================================================
