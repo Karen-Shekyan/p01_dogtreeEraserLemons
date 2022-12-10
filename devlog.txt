@@ -79,3 +79,12 @@ mahirR -- 2022-12-9 1:30 PM
   - added getter methods for heroes and pokemon in database.py
   - initialized database with all heroes in the hero table
 ==============================================================
+
+ianJ -- 2022-12-10 1:00 AM
+--------------------------------------------------------------
+  - added route for /profile for a logged in user
+  - added route for /profile/<user> to view any other user
+  - added qr codes that display on the profile
+    - qr codes lead to the user's profile
+    - you don't need to be logged in to view the profile
+  - fixed bugs regarding home button and sessions
