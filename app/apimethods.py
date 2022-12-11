@@ -50,3 +50,5 @@ def hero_info(hero_id):
     bio = f'{FullName} or {name} is a {alignedment} aligned character {placeOfBirth}. {name} has the appearance of a {race}{gender} {height} {weight}with {eyeColor} eyes and {hairColor}. {pronoun} works as a {occupation}. {pronoun} first appeared in {firstAppearance} by {publisher}. {pronoun} is affiliated {groupAffiliation}.'
     image = data["images"]["md"]
     return [name, powerstats, bio, image]
+
+# print(hero_info(9))
