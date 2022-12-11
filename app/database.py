@@ -1,9 +1,10 @@
-import sqlite3, apimethods
+import sqlite3, apimethods, requests, json
 
 db = sqlite3.connect("database.db", check_same_thread=False)
 global c
 c = db.cursor()
-
+created = False
+unlisted_hero = [9, 16, 19, 21, 22, 27, 33, 46, 47, 50, 51]
 # making tables
 c.execute("CREATE TABLE if not exists users(username TEXT, password TEXT, email TEXT, favorite TEXT)")
 c.execute("CREATE TABLE if not exists jokes(joke_id INTEGER PRIMARY KEY, content TEXT, character TEXT)")
@@ -11,10 +12,13 @@ c.execute("CREATE TABLE if not exists heroes(hero_id INTEGER PRIMARY KEY, name T
 c.execute("CREATE TABLE if not exists pokemon(pokemon_id INTEGER PRIMARY KEY, name TEXT, poke_type TEXT, stats TEXT, bio TEXT, image_link TEXT)")
 
 # to execute heroes table with all heroes
-# for i in range(1, 732):
-#     hero = apimethods.hero_info(i)
-#     c.execute("INSERT INTO heroes VALUES (?,?,?,?,?)", (i, str(hero[0]), str(hero[1]), str(hero[2]), str(hero[3])))
-
+if (not created):
+    for i in range(1, 732):
+        if(not i in unlisted_hero):
+            hero = apimethods.hero_info(i)
+            c.execute("INSERT INTO heroes VALUES (?,?,?,?,?)", (i, str(hero[0]), str(hero[1]), str(hero[2]), str(hero[3])))
+        print(i)
+    created = True
 # general method that can be used to get data easier
 def select_from(table, data_want, datagive, datatype_give):
     temp = ((c.execute(f"SELECT {data_want} FROM {table} WHERE {datatype_give} = '{datagive}'")).fetchall())
@@ -101,7 +105,10 @@ def get_hero_bio(hero_id):
     if hero_in_db(hero_id):
         return c.execute(f"SELECT bio FROM heroes WHERE hero_id = '{hero_id}'").fetchall()[0][0]
     return False
-
+def get_hero_image(hero_id):
+    if hero_in_db(hero_id):
+        return c.execute(f"SELECT image_link FROM heroes WHERE hero_id = '{hero_id}'").fetchall()[0][0]
+    return False
 # do not use this yet; might have an initialization of all the pokemon into the pokemon table so no point of this method
 def add_pokemon(pokemon_id, name, poke_type, stats, bio):
     if select_from("pokemon", "pokemon_id", pokemon_id, "pokemon_id") == 0:
