@@ -24,7 +24,7 @@ the user's profile.
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
-karenS -- 2022-12-7 7:40
+karenS -- 2022-12-7 7:40 AM
 --------------------------------------------------------------
   - Updated design doc w/ feedback:
       - List APIs used
@@ -34,18 +34,48 @@ karenS -- 2022-12-7 7:40
       - *Ensure site map displays correctly*
       - Clarify use of templates
 
-mahirR -- 2022-12-7 1:00
+mahirR -- 2022-12-7 12:30 PM
 --------------------------------------------------------------
-  - Initialized app (__init__.py)
+- Initialized the __init__.py file
+    - Created a flask app instance
+- Created a database.py file
+    - Created a function to add a user to the table
+    - Created a function to check if a user exists
+    - Created a function to check if a user's password is correct
+    - Created a function to get a user's favorites
+    - Created a function to add a favorite to a user's favorites
+    - Created a function to remove a favorite from a user's favorites
+==============================================================
 
-karenS -- 2022-12-8 8:20
+karenS -- 2022-12-8 8:20 AM
 --------------------------------------------------------------
   - Created basic login template
   - Updated / route to render login
 
-==============================================================
-mahirR -- 2022-12-7 12:30 PM
+karenS -- 2022-12-8 1:00 PM
 --------------------------------------------------------------
-  - Initialized the __init__.py file
-    - created a flask app instance
+  - Created navbar with proper alignment
+  - Created temporary /home route for testing
+  - White-boarded all templates to be implemented
+
+ianJ -- 2022-12-8 7:40 PM
+--------------------------------------------------------------
+  - implemented cookies/sessions
+  - added email text box for signup
+  - fixed bugs in database.py
+    - some of the functions referred to the table 'user', not 'users'
+    - signup function only inputted 3 values even though users has 4 columns --> made the function set favorites to empty string
+  - added logout feature
+
+kevinL -- 2022-12-8 11:14 PM
+--------------------------------------------------------------
+  - added templates for information slides
+  - researched ways to implement search
+  - added routes to information pages
+==============================================================
+
+mahirR -- 2022-12-9 1:30 PM
+--------------------------------------------------------------
+  - added getter methods for heroes and pokemon in database.py
+  - initialized database with all heroes in the hero table
 ==============================================================
