@@ -11,6 +11,13 @@ def log_in():
         return render_template('home.html')
     return render_template('login.html')
 
+@app.route('/home')
+def home():
+    if (session):
+        return render_template('home.html')
+    else:
+        return redirect('/')
+
 @app.route('/login', methods = ["POST"])
 def authenticate():
     if 'username' in session:
@@ -26,7 +33,7 @@ def authenticate():
             session['username'] = request.form['username']
         if request.method == 'GET':
             session['username'] = request.args['username']
-        return render_template('home.html')
+        return redirect('/home')
     else:
         return render_template('login.html', errorTextL= "Please enter a valid username and password")
 
@@ -48,7 +55,7 @@ def sign_up():
 @app.route('/hero/<int:hero_id>')
 def display(hero_id):
     url = f"https://akabab.github.io/superhero-api/api/id/{hero_id}.json"
-    #print(url)  
+    #print(url)
     data = json.loads(requests.get(url).text)
     #print(data)
     #print("----------------------------------")
@@ -100,11 +107,10 @@ def display(hero_id):
     image = data["images"]["md"]
     return render_template('hero.html', Information = bio, picture = image, stats = [powerstats], title = name)
 
-@app.route('/logout', methods = ['POST'])
+@app.route('/logout', methods = ['GET'])
 def logout():
-    if 'username' in session:
-        session.pop('username')
-    return redirect('http://127.0.0.1:5000/')
+    session.pop('username', None)
+    return redirect('/')
 
 if __name__ == '__main__':
 	app.debug = True

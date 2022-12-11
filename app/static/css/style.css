@@ -1,1 +1,17 @@
-
+.navbar {
+  margin-bottom: 3vw;
+}
+.title {
+  font-size: 22px;
+}
+.ad {
+  padding-top: 30vw;
+  padding-bottom: 30vw;
+  background-color: #f8f9fa;
+}
+.recent {
+  font-size: 18px;
+}
+p {
+  font-size: 14px;
+}
