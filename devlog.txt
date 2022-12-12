@@ -102,3 +102,10 @@ ianJ -- 2022-12-10 1:00 AM
     - you don't need to be logged in to view the profile
   - fixed bugs regarding home button and sessions
 ==============================================================
+
+mahirR -- 2022-12-12 1:14 PM
+--------------------------------------------------------------
+  - seperated character db methods to a seperated file
+  - made a new database
+  - made changes to __init__.py to reflect new database
+==============================================================
