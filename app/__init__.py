@@ -66,8 +66,14 @@ def display(hero_id):
         bio = get_hero_bio(hero_id)
         image = get_hero_image(hero_id)
         powerstats = get_hero_powerstats(hero_id)
+        powerstats = powerstats[1: -1]
+        powerstats = powerstats.split(",")
+        pstats = {}
+        for elements in powerstats:
+            temp = elements.split(":")
+            pstats[temp[0][1:-1]] = temp[1][1:]
         name = get_hero_name(hero_id)
-        return render_template('hero.html', Information = bio, picture = image, stats = powerstats, title = name)
+        return render_template('hero.html', Information = bio, picture = image, stats = pstats, title = name)
 
 @app.route('/logout', methods = ['GET', 'POST'])
 def logout():
