@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, request, redirect
 import requests, os, json
 from database import *
+from characterdb import *
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
