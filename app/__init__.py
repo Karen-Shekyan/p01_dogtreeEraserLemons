@@ -49,11 +49,14 @@ def sign_up():
         user = request.args['username']
         pw = request.args['password']
         email = request.args['email']
-    if signup(user,pw,email):
-        return render_template('login.html')
+    if '@' in email and '.' in email.split('@')[1]:
+        if signup(user,pw,email):
+            return render_template('login.html')
+        else:
+            return render_template('login.html', errorTextS= "User already exists")
     else:
-        return render_template('login.html', errorTextS= "User already exists")
-
+        return render_template('login.html', errorTextS = "Invalid email")
+        
 @app.route('/hero/<int:hero_id>')
 def display(hero_id):
     if (not hero_in_db(hero_id)):
