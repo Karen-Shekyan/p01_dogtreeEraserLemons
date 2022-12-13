@@ -102,3 +102,8 @@ ianJ -- 2022-12-10 1:00 AM
     - you don't need to be logged in to view the profile
   - fixed bugs regarding home button and sessions
 ==============================================================
+
+karenS -- 2022-12-12 4:30 PM
+--------------------------------------------------------------
+  - styled hero template
+    - added progress bars for stats (must polish)
