@@ -1,7 +1,7 @@
 import requests, json
 
 def hero_info(hero_id):
-    url = f"https://akabab.github.io/superhero-api/api/id/{hero_id}.json" 
+    url = f"https://akabab.github.io/superhero-api/api/id/{hero_id}.json"
     data = json.loads(requests.get(url).text)
     FullName = data["biography"]["fullName"]
     name = data["name"]
@@ -11,7 +11,7 @@ def hero_info(hero_id):
     placeOfBirth = data["biography"]["placeOfBirth"]
     if placeOfBirth == "-":
         placeOfBirth = ""
-    else: 
+    else:
         placeOfBirth = "borned in "+placeOfBirth
     gender = data["appearance"]["gender"]
     if(gender == "Male"):
@@ -48,6 +48,5 @@ def hero_info(hero_id):
     else:
         groupAffiliation = "as a " + groupAffiliation
     bio = f'{FullName} or {name} is a {alignedment} aligned character {placeOfBirth}. {name} has the appearance of a {race}{gender} {height} {weight}with {eyeColor} eyes and {hairColor}. {pronoun} works as a {occupation}. {pronoun} first appeared in {firstAppearance} by {publisher}. {pronoun} is affiliated {groupAffiliation}.'
-    image = data["images"]["md"]
+    image = data["images"]["sm"]
     return [name, powerstats, bio, image]
-

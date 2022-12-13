@@ -18,7 +18,7 @@ def home():
     else:
         return redirect('/')
 
-@app.route('/login', methods = ["GET", "POST"])
+@app.route('/login', methods = ["POST"])
 def authenticate():
     if 'username' in session:
         return render_template('home.html')
@@ -56,7 +56,7 @@ def sign_up():
             return render_template('login.html', errorTextS= "User already exists")
     else:
         return render_template('login.html', errorTextS = "Invalid email")
-        
+
 @app.route('/hero/<int:hero_id>')
 def display(hero_id):
     if (not hero_in_db(hero_id)):
