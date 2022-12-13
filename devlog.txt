@@ -103,7 +103,14 @@ ianJ -- 2022-12-10 1:00 AM
   - fixed bugs regarding home button and sessions
 ==============================================================
 
+mahirR -- 2022-12-12 1:14 PM
+--------------------------------------------------------------
+  - seperated character db methods to a seperated file
+  - made a new database
+  - made changes to __init__.py to reflect new database
+
 karenS -- 2022-12-12 4:30 PM
 --------------------------------------------------------------
   - styled hero template
     - added progress bars for stats (must polish)
+==============================================================
