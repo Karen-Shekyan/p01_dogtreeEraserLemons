@@ -41,10 +41,13 @@ mahirR -- 2022-12-7 12:30 PM
 - Created a database.py file
     - Created a function to add a user to the table
     - Created a function to check if a user exists
-    - Created a function to check if a user's password is correct
+    - Created a function to check if a user's password is
+      correct
     - Created a function to get a user's favorites
-    - Created a function to add a favorite to a user's favorites
-    - Created a function to remove a favorite from a user's favorites
+    - Created a function to add a favorite to a user's
+      favorites
+    - Created a function to remove a favorite from a user's
+      favorites
 ==============================================================
 
 karenS -- 2022-12-8 8:20 AM
@@ -63,8 +66,11 @@ ianJ -- 2022-12-8 7:40 PM
   - implemented cookies/sessions
   - added email text box for signup
   - fixed bugs in database.py
-    - some of the functions referred to the table 'user', not 'users'
-    - signup function only inputted 3 values even though users has 4 columns --> made the function set favorites to empty string
+    - some of the functions referred to the table 'user', not
+      'users'
+    - signup function only inputted 3 values even though users
+      has 4 columns --> made the function set favorites to
+      empty string
   - added logout feature
 
 kevinL -- 2022-12-8 11:14 PM
@@ -78,4 +84,38 @@ mahirR -- 2022-12-9 1:30 PM
 --------------------------------------------------------------
   - added getter methods for heroes and pokemon in database.py
   - initialized database with all heroes in the hero table
+
+karenS -- 2022-12-9 2:30 PM
+--------------------------------------------------------------
+  - added css grid to home for organization
+  - added permanent /home route with redirects to/from /
+    route
+
 ==============================================================
+
+ianJ -- 2022-12-10 1:00 AM
+--------------------------------------------------------------
+  - added route for /profile for a logged in user
+  - added route for /profile/<user> to view any other user
+  - added qr codes that display on the profile
+    - qr codes lead to the user's profile
+    - you don't need to be logged in to view the profile
+  - fixed bugs regarding home button and sessions
+==============================================================
+
+mahirR -- 2022-12-12 1:14 PM
+--------------------------------------------------------------
+  - seperated character db methods to a seperated file
+  - made a new database
+  - made changes to __init__.py to reflect new database
+
+karenS -- 2022-12-12 4:30 PM
+--------------------------------------------------------------
+  - styled hero template
+    - added progress bars for stats (must polish)
+==============================================================
+
+karenS -- 2022-12-13 8:30 AM
+--------------------------------------------------------------
+  - polished stat bars for hero page
+  - fixed home link on relevant pages

@@ -48,3 +48,8 @@ A website that allows users to signup/login and search for pokemon and superhero
   ```python
   python3 __init__.py
   ```
+  
+  ### Put URL into Browser's URL Bar
+  ```
+  http://127.0.0.1:5000/
+  ```

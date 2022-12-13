@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, request, redirect
 import requests, os, json
 from database import *
+from characterdb import *
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -10,6 +11,13 @@ def log_in():
     if 'username' in session:
         return render_template('home.html')
     return render_template('login.html')
+
+@app.route('/home')
+def home():
+    if (session):
+        return render_template('home.html')
+    else:
+        return redirect('/')
 
 @app.route('/login', methods = ["POST"])
 def authenticate():
@@ -26,12 +34,14 @@ def authenticate():
             session['username'] = request.form['username']
         if request.method == 'GET':
             session['username'] = request.args['username']
-        return render_template('home.html')
+        return redirect('/home')
     else:
         return render_template('login.html', errorTextL= "Please enter a valid username and password")
 
 @app.route('/signup', methods = ["POST"])
 def sign_up():
+    if 'username' in session:
+        return render_template('home.html')
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
@@ -40,72 +50,47 @@ def sign_up():
         user = request.args['username']
         pw = request.args['password']
         email = request.args['email']
-    if signup(user,pw,email):
-        return render_template('login.html')
+    if '@' in email and '.' in email.split('@')[1]:
+        if signup(user,pw,email):
+            return render_template('login.html')
+        else:
+            return render_template('login.html', errorTextS= "User already exists")
     else:
-        return render_template('login.html', errorTextS= "User already exists")
+        return render_template('login.html', errorTextS = "Invalid email")
 
 @app.route('/hero/<int:hero_id>')
 def display(hero_id):
-    url = f"https://akabab.github.io/superhero-api/api/id/{hero_id}.json" 
-    #print(url)  
-    data = json.loads(requests.get(url).text)
-    #print(data)
-    #print("----------------------------------")
-    FullName = data["biography"]["fullName"]
-    name = data["name"]
-    powerstats = data["powerstats"]
-    #print(powerstats)
-    alignedment = data["biography"]["alignment"]
-    placeOfBirth = data["biography"]["placeOfBirth"]
-    if placeOfBirth == "-":
-        placeOfBirth = ""
-    else: 
-        placeOfBirth = "borned in "+placeOfBirth
-    gender = data["appearance"]["gender"]
-    if(gender == "Male"):
-        pronoun = "He"
+    if (not hero_in_db(hero_id)):
+        return render_template('noExist.html')
     else:
-        pronoun = "she"
-    race = data["appearance"]["race"]
-    height = data["appearance"]["height"][0]
-    if height != "-":
-        height = "with the height of "+ height + " "
-    else:
-        height = ""
-    if race == None:
-        race = ""
-    else:
-        race = race + " "
-    weight = data["appearance"]["weight"][0]
-    if weight == "- lb":
-        weight = ""
-    else:
-        weight = "and weighing " + weight + " "
-    eyeColor = data["appearance"]["eyeColor"]
-    hairColor = data["appearance"]["hairColor"]
-    if hairColor != "No Hair":
-        hairColor = hairColor + " hair"
-    if eyeColor == "-":
-        eyeColor = "No"
-    occupation = data["work"]["occupation"]
-    firstAppearance = data["biography"]["firstAppearance"]
-    publisher = data["biography"]["publisher"]
-    groupAffiliation = data["connections"]["groupAffiliation"]
-    if groupAffiliation == "-":
-        groupAffiliation = "with no one"
-    else:
-        groupAffiliation = "as a " + groupAffiliation
-    bio = f'{FullName} or {name} is a {alignedment} aligned character {placeOfBirth}. {name} has the appearance of a {race}{gender} {height} {weight}with {eyeColor} eyes and {hairColor}. {pronoun} works as a {occupation}. {pronoun} first appeared in {firstAppearance} by {publisher}. {pronoun} is affiliated {groupAffiliation}.'
-    image = data["images"]["md"]
-    return render_template('hero.html', Information = bio, picture = image, stats = [powerstats])
+        bio = get_hero_bio(hero_id)
+        image = get_hero_image(hero_id)
+        powerstats = get_hero_powerstats(hero_id)
+        powerstats = powerstats[1: -1]
+        powerstats = powerstats.split(",")
+        pstats = {}
+        for elements in powerstats:
+            temp = elements.split(":")
+            pstats[temp[0][1:-1]] = temp[1][1:]
+        name = get_hero_name(hero_id)
+        return render_template('hero.html', Information = bio, picture = image, stats = pstats, title = name)
 
-@app.route('/logout', methods = ['POST'])
+@app.route('/logout', methods = ['GET', 'POST'])
 def logout():
     if 'username' in session:
         session.pop('username')
     return redirect('http://127.0.0.1:5000/')
-    
+
+@app.route('/profile')
+def userprofile():
+    if 'username' not in session:
+        return redirect('http://127.0.0.1:5000/')
+    return render_template('user_profile.html', username=session['username'], favorites=get_list_of_saved_jokes(session['username']))
+
+@app.route('/profile/<user>')
+def qruserprofile(user):
+    return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user))
+
 if __name__ == '__main__':
 	app.debug = True
 	app.run()
