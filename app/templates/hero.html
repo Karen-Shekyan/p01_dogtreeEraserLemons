@@ -20,7 +20,7 @@ time spent:  hrs
 
     <nav class="navbar sticky-top navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/login">
+        <a class="navbar-brand" href="/home">
           <!-- CURRENT page title -->
           <img src="">{{title}}
         </a>
@@ -60,31 +60,32 @@ time spent:  hrs
           </div>
           <div class="row text-left">
             <div class="col">
+              <br>
               <h5> Intelligence </h5>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> NUMBER </div>
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["intelligence"]}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> {{stats["intelligence"]}} </div>
               </div>
               <h5> Strength </h5>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> NUMBER </div>
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["'strength"]}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> {{stats["'strength"]}} </div>
               </div>
               <h5> Speed </h5>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> NUMBER </div>
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["'speed"]}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> {{stats["'speed"]}} </div>
               </div>
               <h5> Durability </h5>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> NUMBER </div>
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["'durability"]}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> {{stats["'durability"]}} </div>
               </div>
               <h5> Power </h5>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> NUMBER </div>
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["'power"]}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> {{stats["'power"]}} </div>
               </div>
               <h5> Combat </h5>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> NUMBER </div>
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["'combat"]}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> {{stats["'combat"]}} </div>
               </div>
-              {{stats}}
+              <br>
             </div>
           </div>
         </div>

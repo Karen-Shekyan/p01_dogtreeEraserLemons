@@ -114,3 +114,8 @@ karenS -- 2022-12-12 4:30 PM
   - styled hero template
     - added progress bars for stats (must polish)
 ==============================================================
+
+karenS -- 2022-12-13 8:30 AM
+--------------------------------------------------------------
+  - polished stat bars for hero page
+  - fixed home link on relevant pages
