@@ -48,7 +48,7 @@ def hero_info(hero_id):
     else:
         groupAffiliation = "as a " + groupAffiliation
     bio = f'{FullName} or {name} is a {alignedment} aligned character {placeOfBirth}. {name} has the appearance of a {race}{gender} {height} {weight}with {eyeColor} eyes and {hairColor}. {pronoun} works as a {occupation}. {pronoun} first appeared in {firstAppearance} by {publisher}. {pronoun} is affiliated {groupAffiliation}.'
-    image = data["images"]["sm"]
+    image = data["images"]["md"]
     return [name, powerstats, bio, image]
 
 def poke_info(poke_id):
@@ -84,7 +84,7 @@ def poke_info(poke_id):
             held_items += temp + ', '
         else:
             held_items += temp
-    
+
     types_temp = data['types']
     types = []
     for i in types_temp:
@@ -93,14 +93,14 @@ def poke_info(poke_id):
         types_str = types[0]
     else:
         types_str = types[0] + " and " + types[1]
-    
+
     stats = data['stats']
     base_stats = {}
     for i in stats:
         base_stats[i['stat']['name']] = i['base_stat']
 
     sprite = data['sprites']['front_default']
-    
+
     url_location = f"https://pokeapi.co/api/v2/pokemon/{poke_id}/encounters"
     data_location = json.loads(requests.get(url_location).text)
     locations = ""
@@ -113,8 +113,8 @@ def poke_info(poke_id):
             locations += temp + ', '
         else:
             locations += temp
-        
-    
+
+
 
     bio = f"{name} is a {types_str} type pokemon. It is {height} decimeters tall and weighs {weight} hectograms. {name} can evolve into {evolutions}. It can hold {held_items} and can be found at {locations}."
     return [name, base_stats, bio, sprite]
