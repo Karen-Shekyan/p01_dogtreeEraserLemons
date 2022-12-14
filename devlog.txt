@@ -140,4 +140,10 @@ karenS -- 2022-12-14 8:30 AM
 --------------------------------------------------------------
   - added title and byline to home page
   - made better layout for login template
+
+mahirR -- 2022-12-14 3:27 PM
+--------------------------------------------------------------
+  - moved javascript to a file in static folder
+  - added the javascript to all html file that requires it
+  - fixed the search function so it redirects you to hero data
 ==============================================================
