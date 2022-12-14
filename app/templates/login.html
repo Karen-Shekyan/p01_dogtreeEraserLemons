@@ -18,32 +18,46 @@ time spent:  hrs
 
   <body>
 
-    <!-- TITLE <h2></h2> -->
-    <p>A project created by Team <i>Dogtree Eraser Lemons</i></p>
-    <p>Roster: Karen Shekyan, Kevin Liu, Mahir Riki, Ian Jiang</p>
-    <br>
-
-    <h2> Login </h2>
-    <p style="color:red;"> {{errorTextL}} </p>
-    <form action="/login" method="POST">
-      <label><span class="label">Username</span></label><br>
-      <input type="text" name="username"></input><br>
-      <label><span class="label">Password</span></label><br>
-      <input type="password" name="password"></input><br><br>
-      <input type="submit" value="Login" class="button-2" role="button"></input>
-    </form>
-
-    <h2> Signup </h2>
-    <p style="color:red;"> {{errorTextS}} </p>
-    <form action="/signup" method="POST">
-      <label><span class="label">Username</span></label><br>
-      <input type="text" name="username"></input><br>
-      <label><span class="label">Email</span></label><br>
-      <input type="text" name="email"></input><br>
-      <label><span class="label">Password</span></label><br>
-      <input type="password" name="password"></input><br><br>
-      <input type="submit" value="Signup" class="button-2" role="button"></input>
-    </form>
+    <div class="container text-center">
+      <div class="row g-2">
+        <div class="col-12">
+          <div class="p-3 title border-0 bg-transparent">
+            <h2> PBJ </h2>
+            <h4> (Pokemon Bero Joke Device) </h4>
+            <p>A project created by Team <i>Dogtree Eraser Lemons</i>
+            <br>Roster: Karen Shekyan, Kevin Liu, Mahir Riki, Ian Jiang</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="p-3 border-0">
+            <h2> Login </h2>
+            <p style="color:red;"> {{errorTextL}} </p>
+            <form action="/login" method="POST">
+              <label><span class="label">Username</span></label><br>
+              <input type="text" name="username"></input><br>
+              <label><span class="label">Password</span></label><br>
+              <input type="password" name="password"></input><br><br>
+              <input type="submit" value="Login" class="button-2" role="button"></input>
+            </form>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="p-3 border-0">
+            <h2> Signup </h2>
+            <p style="color:red;"> {{errorTextS}} </p>
+            <form action="/signup" method="POST">
+              <label><span class="label">Username</span></label><br>
+              <input type="text" name="username"></input><br>
+              <label><span class="label">Email</span></label><br>
+              <input type="text" name="email"></input><br>
+              <label><span class="label">Password</span></label><br>
+              <input type="password" name="password"></input><br><br>
+              <input type="submit" value="Signup" class="button-2" role="button"></input>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </body>
 

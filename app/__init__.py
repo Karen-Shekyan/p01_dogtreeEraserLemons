@@ -65,6 +65,7 @@ def display(hero_id):
     else:
         bio = get_hero_bio(hero_id)
         image = get_hero_image(hero_id)
+        print(image)
         powerstats = get_hero_powerstats(hero_id)
         powerstats = powerstats[1: -1]
         powerstats = powerstats.split(",")

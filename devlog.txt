@@ -132,5 +132,6 @@ ianJ -- 2022-12-14 1:20 AM
 
 karenS -- 2022-12-14 8:30 AM
 --------------------------------------------------------------
-  - Added title and byline to home page
+  - added title and byline to home page
+  - made better layout for login template
 ==============================================================
