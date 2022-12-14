@@ -32,9 +32,9 @@ time spent:  hrs
             <!-- <a class="nav-link active" aria-current="page" href="/home">Home</a> -->
             <a class="nav-link" href="/profile">Profile</a>
             <a class="nav-link" href="/joke">Joke</a>
-            <form autocomplete="off" action="{{ url_for('search') }}" class="d-flex" role="search">
+            <form autocomplete="off" action="/search" class="d-flex" role="search">
               <div class="autocomplete">
-                <input id="myInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input name="search" id="myInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               </div>
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>

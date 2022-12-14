@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, redirect
+from flask import Flask, render_template, session, request, redirect, url_for
 import requests, os, json
 from database import *
 from characterdb import *
@@ -97,7 +97,9 @@ def search():
     if 'username' not in session:
         return redirect('http://127.0.0.1:5000/')
     if request.method == 'GET':
-        return render_template('search.html')
+        character = request.args['search']
+        hero = get_hero_id(character)
+        return redirect('/hero/' + str(hero))
 
 if __name__ == '__main__':
 	app.debug = True
