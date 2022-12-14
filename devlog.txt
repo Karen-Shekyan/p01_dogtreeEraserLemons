@@ -121,6 +121,12 @@ karenS -- 2022-12-13 8:30 AM
   - fixed home link on relevant pages
 ==============================================================
 
+mahirR -- 2022-12-14 12:30 AM
+--------------------------------------------------------------
+  - added autocomplete for search using javascript in home page
+  - added search functionality for heroes
+  - made a get all heroes method
+
 ianJ -- 2022-12-14 1:20 AM
 --------------------------------------------------------------
   - added a check for a valid email --> has @ symbol and a .
