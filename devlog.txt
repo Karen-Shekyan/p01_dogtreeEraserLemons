@@ -134,4 +134,9 @@ karenS -- 2022-12-14 8:30 AM
 --------------------------------------------------------------
   - added title and byline to home page
   - made better layout for login template
+  - fixed hero image display on /hero/{id} route
+
+karenS -- 2022-12-14 1:20 PM
+--------------------------------------------------------------
+  - formatted profile page
 ==============================================================

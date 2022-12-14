@@ -15,3 +15,13 @@
 p {
   font-size: 14px;
 }
+
+.u_info {
+  font-size: 22px;
+}
+
+.favs {
+  padding-top: 1vw;
+  padding-bottom: 1.6vw;
+  background-color: #f8f9fa;
+}

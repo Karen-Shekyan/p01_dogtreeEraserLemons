@@ -41,8 +41,35 @@ time spent:  hrs
       </div>
     </nav>
 
-    {{username}}
-    <img src="https://qrtag.net/api/qr.png?url=http://127.0.0.1:5000/profile/{{username}}" alt="qrtag">
+
+    <div class="container">
+      <div class="row g-2 text-center">
+        <div class="col-12">
+          <div class="p-3 title border-0 bg-transparent">
+            <h2> Profile </h2>
+          </div>
+        </div>
+      </div>
+      <div class="row g-2 text-left">
+        <div class="col-6 u_info">
+          <div class="p-3 border-0">
+            <b>Username:</b> {{username}} <br>
+            <b>Email:</b>  <br>
+            <!-- BUTTON HERE --> <br><br>
+            <img src="https://qrtag.net/api/qr.png?url=http://127.0.0.1:5000/profile/{{username}}" alt="qrtag">
+          </div>
+        </div>
+        <div class="col-6 u_info">
+          <div class="p-3 border-0">
+            <b> Favorites: </b>
+            <div class="favs">
+              {{favorites}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 
 </html>
