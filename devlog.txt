@@ -126,3 +126,4 @@ ianJ -- 2022-12-14 1:20 AM
   - added parsing method for pokemon api
     - returns name, short description, stats and a sprite
     - evolutions isn't accurate, need to find out how to get evolution from pokemon id
+==============================================================
