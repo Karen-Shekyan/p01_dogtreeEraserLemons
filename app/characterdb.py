@@ -123,5 +123,11 @@ def get_pokemon_image(pokemon_id):
         return c.execute(f"SELECT image_link FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
     return False
 
+def search_heroes():
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    heroes = c.execute("SELECT name FROM heroes").fetchall()
+    return heroes
+    
 db.commit()
 db.close()

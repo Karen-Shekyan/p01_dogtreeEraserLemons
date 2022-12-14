@@ -91,6 +91,15 @@ def userprofile():
 def qruserprofile(user):
     return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user))
 
+@app.route('/search', methods = ['GET', 'POST'])
+def search():
+    if 'username' not in session:
+        return redirect('http://127.0.0.1:5000/')
+    results = None
+    if request.method == 'GET':
+        results = search_heroes()
+    return render_template('search.html', results=results)
+
 if __name__ == '__main__':
 	app.debug = True
 	app.run()
