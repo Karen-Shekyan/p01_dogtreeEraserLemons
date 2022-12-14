@@ -9,20 +9,20 @@ app.secret_key = os.urandom(32)
 @app.route('/')
 def log_in():
     if 'username' in session:
-        return render_template('home.html')
+        return render_template('home.html', heroes = get_all_ordered_heroes())
     return render_template('login.html')
 
 @app.route('/home')
 def home():
     if (session):
-        return render_template('home.html')
+        return render_template('home.html', heroes = get_all_ordered_heroes())
     else:
         return redirect('/')
 
 @app.route('/login', methods = ["POST"])
 def authenticate():
     if 'username' in session:
-        return render_template('home.html')
+        return render_template('home.html', heroes = get_all_ordered_heroes())
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
@@ -41,7 +41,7 @@ def authenticate():
 @app.route('/signup', methods = ["POST"])
 def sign_up():
     if 'username' in session:
-        return render_template('home.html')
+        return render_template('home.html', heroes = get_all_ordered_heroes())
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
@@ -90,7 +90,14 @@ def userprofile():
 
 @app.route('/profile/<user>')
 def qruserprofile(user):
-    return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user))
+    return render_template('user_profile.html', username=user, favorites=get_all_ordered_heroes(user))
+
+@app.route('/search', methods = ['GET', 'POST'])
+def search():
+    if 'username' not in session:
+        return redirect('http://127.0.0.1:5000/')
+    if request.method == 'GET':
+        return render_template('search.html')
 
 if __name__ == '__main__':
 	app.debug = True
