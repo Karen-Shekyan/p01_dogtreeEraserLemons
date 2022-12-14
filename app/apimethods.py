@@ -50,3 +50,71 @@ def hero_info(hero_id):
     bio = f'{FullName} or {name} is a {alignedment} aligned character {placeOfBirth}. {name} has the appearance of a {race}{gender} {height} {weight}with {eyeColor} eyes and {hairColor}. {pronoun} works as a {occupation}. {pronoun} first appeared in {firstAppearance} by {publisher}. {pronoun} is affiliated {groupAffiliation}.'
     image = data["images"]["sm"]
     return [name, powerstats, bio, image]
+
+def poke_info(poke_id):
+    url = f"https://pokeapi.co/api/v2/pokemon/{poke_id}/"
+    data = json.loads(requests.get(url).text)
+    name = data['name']
+    name = name.capitalize()
+    height = data['height']
+    weight = data['weight']
+
+    url_evolve= f"https://pokeapi.co/api/v2/evolution-chain/{poke_id}/"
+    data_evolve = json.loads(requests.get(url_evolve).text)
+    evolutions_temp = data_evolve['chain']['evolves_to']
+    evolutions = ""
+    if len(evolutions_temp) == 0:
+        evolutions = 'no further evolutions'
+    else:
+        for i in evolutions_temp:
+            temp = i['species']['name']
+            if evolutions_temp.index(i) != len(evolutions_temp) - 1:
+                evolutions += temp + ', '
+            else:
+                evolutions += temp
+
+    held_items_temp = data['held_items']
+    held_items = ""
+    if len(held_items_temp) == 0:
+        held_items = 'no items'
+    for i in held_items_temp:
+        temp = i['item']['name']
+        temp = temp.replace('-',' ')
+        if held_items_temp.index(i) != len(held_items_temp) - 1 and len(held_items_temp) != 1:
+            held_items += temp + ', '
+        else:
+            held_items += temp
+    
+    types_temp = data['types']
+    types = []
+    for i in types_temp:
+        types.append(i['type']['name'])
+    if len(types) == 1:
+        types_str = types[0]
+    else:
+        types_str = types[0] + " and " + types[1]
+    
+    stats = data['stats']
+    base_stats = {}
+    for i in stats:
+        base_stats[i['stat']['name']] = i['base_stat']
+
+    sprite = data['sprites']['front_default']
+    
+    url_location = f"https://pokeapi.co/api/v2/pokemon/{poke_id}/encounters"
+    data_location = json.loads(requests.get(url_location).text)
+    locations = ""
+    if len(data_location) == 0:
+        locations = "no natural locations"
+    for i in data_location:
+        temp = i['location_area']['name']
+        temp = temp.replace('-',' ')
+        if data_location.index(i) != len(data_location) - 1 and len(data_location) != 1:
+            locations += temp + ', '
+        else:
+            locations += temp
+        
+    
+
+    bio = f"{name} is a {types_str} type pokemon. It is {height} decimeters tall and weighs {weight} hectograms. {name} can evolve into {evolutions}. It can hold {held_items} and can be found at {locations}."
+    return [name, base_stats, bio, sprite]
