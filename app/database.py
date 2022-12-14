@@ -90,6 +90,12 @@ def add_joke_to_user(username, joke_id):
             return True
     return False
 
+def get_email(username):
+    db = sqlite3.connect("user.db", check_same_thread=False)
+    c = db.cursor()
+    if (select_from("user.db", "users", "username", username, "username") != 0):
+        return select_from("user.db", "users", "email", username, "username")
+
 # def add_hero(hero_id, name, powerstats, bio):
 #     if select_from("heroes", "hero_id", hero_id, "hero_id") == 0:
 #         c.execute(f"INSERT INTO heroes VALUES (?,?,?,?)", (hero_id, name, powerstats, bio))

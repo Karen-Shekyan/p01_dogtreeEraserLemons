@@ -132,4 +132,4 @@ def get_pokemon_image(pokemon_id):
 db.commit()
 db.close()
 
-print(get_all_ordered_heroes())
+# print(get_all_ordered_heroes())
