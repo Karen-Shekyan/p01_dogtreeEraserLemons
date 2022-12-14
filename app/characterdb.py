@@ -72,6 +72,12 @@ def get_hero_image(hero_id):
         return c.execute(f"SELECT image_link FROM heroes WHERE hero_id = '{hero_id}'").fetchall()[0][0]
     return False
 
+def get_all_ordered_heroes():
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    list_of_heroes = c.execute("SELECT DISTINCT name FROM heroes ORDER BY name").fetchall()
+    return list_of_heroes
+
 # to initialize table with heroes
 created = hero_in_db(1)
 print(created)
@@ -122,6 +128,8 @@ def get_pokemon_image(pokemon_id):
     if pokemon_in_db(pokemon_id):
         return c.execute(f"SELECT image_link FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
     return False
-
+    
 db.commit()
 db.close()
+
+print(get_all_ordered_heroes())
