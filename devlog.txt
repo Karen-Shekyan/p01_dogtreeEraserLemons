@@ -119,3 +119,14 @@ karenS -- 2022-12-13 8:30 AM
 --------------------------------------------------------------
   - polished stat bars for hero page
   - fixed home link on relevant pages
+==============================================================
+
+ianJ -- 2022-12-14 1:20 AM
+--------------------------------------------------------------
+  - added a check for a valid email --> has @ symbol and a . 
+    after the @
+  - added parsing method for pokemon api
+    - returns name, short description, stats and a sprite
+    - evolutions isn't accurate, need to find out how to get 
+      evolution from pokemon id
+==============================================================
