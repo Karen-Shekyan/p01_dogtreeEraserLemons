@@ -181,3 +181,15 @@ ianJ -- 2022-12-14 11:10 PM
   - fixed method to parse poke api
     - bio contains which pokemon it evolves into and from
 ==============================================================
+
+karenS -- 2022-12-15 1:20 PM
+--------------------------------------------------------------
+  - added edit button to profile
+  - created basic /joke route
+
+karenS -- 2022-12-15 4:30 PM
+--------------------------------------------------------------
+  - created layout for view_joke.html (with placeholders)
+    - figured out how to display cards properly!!
+    - may need to get rid of QR tag
+    - need small images in database
