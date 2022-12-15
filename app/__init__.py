@@ -86,11 +86,11 @@ def logout():
 def userprofile():
     if 'username' not in session:
         return redirect('http://127.0.0.1:5000/')
-    return render_template('user_profile.html', username=session['username'], favorites=get_all_ordered_heroes(session['username']), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
+    return render_template('user_profile.html', username=session['username'], favorites=get_list_of_saved_jokes(session['username']), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
 
 @app.route('/profile/<user>')
 def qruserprofile(user):
-    return render_template('user_profile.html', username=user, favorites=get_all_ordered_heroes(user), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
+    return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
 
 @app.route('/search', methods = ['GET', 'POST'])
 def search():

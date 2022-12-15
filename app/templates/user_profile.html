@@ -32,15 +32,6 @@ time spent:  hrs
             <!-- <a class="nav-link active" aria-current="page" href="/home">Home</a> -->
             <a class="nav-link" href="/profile">Profile</a>
             <a class="nav-link" href="/joke">Joke</a>
-<<<<<<< HEAD
-            <form autocomplete="off" action="/search" class="d-flex" role="search">
-              <div class="autocomplete">
-                <input name="search" id="myInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              </div>
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            <script src="{{url_for('static', filename='autocomplete.js')}}"></script>
-=======
             <form autocomplete="off" action="{{ url_for('search') }}" class="d-flex" role="search">
               <div class="autocomplete">
                 <input id="myInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -145,7 +136,6 @@ time spent:  hrs
             let heroes = {{heroes|safe}}
             autocomplete(document.getElementById("myInput"), heroes);
             </script>
->>>>>>> Kevin1
             <a class="nav-link" href="/logout">Logout</a>
           </div>
         </div>

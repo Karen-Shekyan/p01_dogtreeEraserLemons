@@ -38,9 +38,6 @@ time spent:  hrs
               </div>
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-<<<<<<< HEAD
-            <script src="{{url_for('static', filename='autocomplete.js')}}"></script>
-=======
             <script>
               let autocomplete = (inp, arr) => {
                 var heroid = {{ heroesid|safe }}
@@ -139,7 +136,6 @@ time spent:  hrs
             let heroes = {{heroes|safe}}
             autocomplete(document.getElementById("myInput"), heroes);
             </script>
->>>>>>> Kevin1
             <a class="nav-link" href="/logout">Logout</a>
           </div>
         </div>
