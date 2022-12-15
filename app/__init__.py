@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, redirect
+from flask import Flask, render_template, session, request, redirect, url_for
 import requests, os, json
 from database import *
 from characterdb import *
@@ -9,20 +9,20 @@ app.secret_key = os.urandom(32)
 @app.route('/')
 def log_in():
     if 'username' in session:
-        return render_template('home.html', heroes = get_all_ordered_heroes())
+        return render_template('home.html')
     return render_template('login.html')
 
 @app.route('/home')
 def home():
     if (session):
-        return render_template('home.html', heroes = get_all_ordered_heroes())
+        return render_template('home.html', heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
     else:
         return redirect('/')
 
 @app.route('/login', methods = ["POST"])
 def authenticate():
     if 'username' in session:
-        return render_template('home.html', heroes = get_all_ordered_heroes())
+        return render_template('home.html', heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
@@ -41,7 +41,7 @@ def authenticate():
 @app.route('/signup', methods = ["POST"])
 def sign_up():
     if 'username' in session:
-        return render_template('home.html', heroes = get_all_ordered_heroes())
+        return render_template('home.html', heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
@@ -74,30 +74,32 @@ def display(hero_id):
             temp = elements.split(":")
             pstats[temp[0][1:-1]] = temp[1][1:]
         name = get_hero_name(hero_id)
-        return render_template('hero.html', Information = bio, picture = image, stats = pstats, title = name)
+        return render_template('hero.html', Information = bio, picture = image, stats = pstats, title = name, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
 
 @app.route('/logout', methods = ['GET', 'POST'])
 def logout():
     if 'username' in session:
         session.pop('username')
-    return redirect('http://127.0.0.1:5000/')
+    return redirect('/')
 
 @app.route('/profile')
 def userprofile():
     if 'username' not in session:
         return redirect('http://127.0.0.1:5000/')
-    return render_template('user_profile.html', username=session['username'], favorites=get_list_of_saved_jokes(session['username']))
+    return render_template('user_profile.html', username=session['username'], favorites=get_list_of_saved_jokes(session['username']), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
 
 @app.route('/profile/<user>')
 def qruserprofile(user):
-    return render_template('user_profile.html', username=user, favorites=get_all_ordered_heroes(user))
+    return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
 
 @app.route('/search', methods = ['GET', 'POST'])
 def search():
     if 'username' not in session:
-        return redirect('http://127.0.0.1:5000/')
+        return redirect('/')
     if request.method == 'GET':
-        return render_template('search.html')
+        character = request.args['search']
+        hero = get_hero_id(character)
+        return redirect('/hero/' + str(hero))
 
 if __name__ == '__main__':
 	app.debug = True

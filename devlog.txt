@@ -91,6 +91,11 @@ karenS -- 2022-12-9 2:30 PM
   - added permanent /home route with redirects to/from /
     route
 
+kevinL -- 2022-12-9 11:30 PM
+--------------------------------------------------------------
+  - added api path and display for informations of heroes.
+  - Made seperate route for each hero
+  - planned information to be displayed in heroes database
 ==============================================================
 
 ianJ -- 2022-12-10 1:00 AM
@@ -103,6 +108,13 @@ ianJ -- 2022-12-10 1:00 AM
   - fixed bugs regarding home button and sessions
 ==============================================================
 
+kevinL -- 2022-12-11 9:15 PM
+--------------------------------------------------------------
+  - Moved api method out of __init__
+  - created a method that takes the data from the hero api and
+    spits out a list
+==============================================================
+
 mahirR -- 2022-12-12 1:14 PM
 --------------------------------------------------------------
   - seperated character db methods to a seperated file
@@ -113,6 +125,12 @@ karenS -- 2022-12-12 4:30 PM
 --------------------------------------------------------------
   - styled hero template
     - added progress bars for stats (must polish)
+
+kevinL -- 2022-12-12 10:30 PM
+--------------------------------------------------------------
+  - Tried finding ways to make search work, gave up after a couple of hours.
+  - It does now display a dropdown
+  - Fixed the jinga display for power stats
 ==============================================================
 
 karenS -- 2022-12-13 8:30 AM
@@ -145,4 +163,21 @@ karenS -- 2022-12-14 8:30 AM
 karenS -- 2022-12-14 1:20 PM
 --------------------------------------------------------------
   - formatted profile page
+
+mahirR -- 2022-12-14 3:27 PM
+--------------------------------------------------------------
+  - moved javascript to a file in static folder
+  - added the javascript to all html file that requires it
+  - fixed the search function so it redirects you to hero data
+
+kevinL -- 2022-12-14 10:00 PM
+--------------------------------------------------------------
+  - Fixed search feature to allow for intext search
+  - Linked search results to hero pages
+  - Search is offically done woohooo.
+
+ianJ -- 2022-12-14 11:10 PM
+--------------------------------------------------------------
+  - fixed method to parse poke api
+    - bio contains which pokemon it evolves into and from
 ==============================================================
