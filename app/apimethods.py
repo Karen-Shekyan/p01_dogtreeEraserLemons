@@ -55,23 +55,29 @@ def poke_info(poke_id):
     url = f"https://pokeapi.co/api/v2/pokemon/{poke_id}/"
     data = json.loads(requests.get(url).text)
     name = data['name']
-    name = name.capitalize()
+    species = data['species']['name']
+    # name = name.capitalize()
     height = data['height']
     weight = data['weight']
 
-    url_evolve= f"https://pokeapi.co/api/v2/evolution-chain/{poke_id}/"
-    data_evolve = json.loads(requests.get(url_evolve).text)
-    evolutions_temp = data_evolve['chain']['evolves_to']
-    evolutions = ""
-    if len(evolutions_temp) == 0:
-        evolutions = 'no further evolutions'
+    url_evolve_from= f"https://pokeapi.co/api/v2/pokemon-species/{poke_id}/"
+    data_evolve_from = json.loads(requests.get(url_evolve_from).text)
+    if data_evolve_from['evolves_from_species'] is None:
+        evolves_from = "no pokemon"
     else:
-        for i in evolutions_temp:
-            temp = i['species']['name']
-            if evolutions_temp.index(i) != len(evolutions_temp) - 1:
-                evolutions += temp + ', '
-            else:
-                evolutions += temp
+        evolves_from = data_evolve_from['evolves_from_species']['name']
+
+    url_evolve_to = data_evolve_from['evolution_chain']['url']
+    data_evolve_to = json.loads(requests.get(url_evolve_to).text)
+    data_temp = data_evolve_to['chain']
+    while(data_temp['species']['name'] != species):
+        print(data_temp['species']['name'])
+        print(name)
+        data_temp = data_temp['evolves_to'][0]
+    if len(data_temp['evolves_to']) == 0:
+        evolves_to = "no further evolutions"
+    else:
+        evolves_to = data_temp['evolves_to'][0]['species']['name']
 
     held_items_temp = data['held_items']
     held_items = ""
@@ -116,5 +122,7 @@ def poke_info(poke_id):
 
 
 
-    bio = f"{name} is a {types_str} type pokemon. It is {height} decimeters tall and weighs {weight} hectograms. {name} can evolve into {evolutions}. It can hold {held_items} and can be found at {locations}."
+    bio = f"{name.capitalize()} is a {types_str} type pokemon. It is {height} decimeters tall and weighs {weight} hectograms. {name.capitalize()} can evolve into {evolves_to} and evolves from {evolves_from}. It can hold {held_items} and can be found at {locations}."
     return [name, base_stats, bio, sprite]
+
+print(poke_info(1))
