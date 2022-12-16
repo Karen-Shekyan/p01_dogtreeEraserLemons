@@ -92,6 +92,10 @@ def userprofile():
 def qruserprofile(user):
     return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
 
+@app.route('/joke')
+def joke():
+    return render_template('view_joke.html')
+
 @app.route('/search', methods = ['GET', 'POST'])
 def search():
     print("a")

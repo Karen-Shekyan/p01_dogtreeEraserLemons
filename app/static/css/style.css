@@ -26,6 +26,15 @@ p {
   background-color: #f8f9fa;
 }
 
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+.card-text {
+  font-size: 18px;
+}
+
 /* for search component */
 .autocomplete {
   position: relative;
