@@ -49,7 +49,7 @@ def get_hero_name(hero_id):
 def get_hero_id(hero_name):
     db = sqlite3.connect("character.db", check_same_thread=False)
     c = db.cursor()
-    return c.execute(f"SELECT hero_id FROM heroes WHERE name = '{hero_name}'").fetchall()[0][0]
+    return c.execute(f"SELECT hero_id FROM heroes WHERE name = ?", (hero_name,)).fetchall()[0][0]
 
 def get_hero_powerstats(hero_id):
     db = sqlite3.connect("character.db", check_same_thread=False)

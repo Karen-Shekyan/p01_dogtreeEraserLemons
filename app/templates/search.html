@@ -15,7 +15,7 @@ time spent:  hrs
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <link rel="stylesheet" Type="text/css" href="../static/css/style.css">
   </head>
-
+  <h3>SEARCH RESULTS</h3>
   <body>
 
     <nav class="navbar sticky-top navbar-expand-lg bg-light">
@@ -41,7 +41,17 @@ time spent:  hrs
         </div>
       </div>
     </nav>
-
+    <p>
+      {% for elements in range(0, leng)%}
+      {{a[elements]}}
+      <form action=/{{b[elements]}}>
+        <input type="submit" value="Go to article"></input>
+      </form>
+      <br>
+      <br>
+    {% endfor %}
+    </p>
+    <br>
   </body>
 
 </html>

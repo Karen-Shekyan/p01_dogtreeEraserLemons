@@ -181,3 +181,7 @@ ianJ -- 2022-12-14 11:10 PM
   - fixed method to parse poke api
     - bio contains which pokemon it evolves into and from
 ==============================================================
+kevinL -- 2022-12-15 11:00 PM
+--------------------------------------------------------------
+  - Added link to search page
+  - Created a search page
