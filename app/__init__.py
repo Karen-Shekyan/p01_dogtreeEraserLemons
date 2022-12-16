@@ -110,7 +110,7 @@ def search():
         search_results = []
         search_results_id = []
         for elements in heroes:
-            if(character.upper() in elements.upper()):
+            if(character.upper().strip() in elements.upper()):
                 search_results.append(elements)
                 print(elements)
                 search_results_id.append(get_hero_id(elements))
