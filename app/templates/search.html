@@ -38,6 +38,10 @@ time spent:  hrs
               </div>
               <input class="btn btn-outline-success" type="submit" value="Search">
             </form>
+            <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
+            <script>
+              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }});
+            </script>
             <a class="nav-link" href="/logout">Logout</a>
           </div>
         </div>
@@ -46,7 +50,7 @@ time spent:  hrs
     <p>
       {% for elements in range(0, leng)%}
       {{a[elements]}}
-      <form action=/{{b[elements]}}>
+      <form action=/hero/{{b[elements]}}>
         <input type="submit" value="Go to article"></input>
       </form>
       <br>

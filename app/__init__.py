@@ -98,21 +98,21 @@ def joke():
 
 @app.route('/search', methods = ['GET', 'POST'])
 def search():
-    print("a")
+    # print("a")
     if 'username' not in session:
         return redirect('/')
     else:
-        print(request.form['search'])
-        print("b")
+        # print(request.form['search'])
+        # print("b")
         character = request.form['search']
-        print(character)
+        # print(character)
         heroes = get_all_ordered_heroes()
         search_results = []
         search_results_id = []
         for elements in heroes:
             if(character.upper().strip() in elements.upper()):
                 search_results.append(elements)
-                print(elements)
+                # print(elements)
                 search_results_id.append(get_hero_id(elements))
         length = len(search_results_id)
         #return render_template('search.html')
