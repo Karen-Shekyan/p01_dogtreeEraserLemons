@@ -71,8 +71,8 @@ def poke_info(poke_id):
     data_evolve_to = json.loads(requests.get(url_evolve_to).text)
     data_temp = data_evolve_to['chain']
     while(data_temp['species']['name'] != species):
-        print(data_temp['species']['name'])
-        print(name)
+        # print(data_temp['species']['name'])
+        # print(name)
         data_temp = data_temp['evolves_to'][0]
     if len(data_temp['evolves_to']) == 0:
         evolves_to = "no further evolutions"
@@ -123,6 +123,6 @@ def poke_info(poke_id):
 
 
     bio = f"{name.capitalize()} is a {types_str} type pokemon. It is {height} decimeters tall and weighs {weight} hectograms. {name.capitalize()} can evolve into {evolves_to} and evolves from {evolves_from}. It can hold {held_items} and can be found at {locations}."
-    return [name, base_stats, bio, sprite]
+    return [name, types, base_stats, bio, sprite]
 
-print(poke_info(1))
+# print(poke_info(1))

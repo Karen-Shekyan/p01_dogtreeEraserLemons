@@ -4,13 +4,15 @@ from database import *
 db = sqlite3.connect("character.db", check_same_thread=False)
 c = db.cursor()
 unlisted_hero = [9, 16, 19, 21, 22, 27, 33, 46, 47, 50, 51, 54, 55, 59, 64, 65, 67, 74, 75, 77, 78, 85, 86, 89, 90, 91, 94, 101, 108, 113, 116, 117, 122, 123, 124, 125, 128, 129, 131, 132, 133, 134, 135, 138, 143, 153, 155, 159, 161, 163, 164, 166, 168, 173, 175, 179, 182, 183, 184, 187, 189, 190, 192, 193, 197, 199, 205, 223, 229, 243, 244, 250, 255, 262, 264, 272, 276, 279, 281, 282, 283, 290, 291, 292, 293, 295, 301, 302, 304, 316, 317, 318, 319, 324, 326, 328, 329, 331, 349, 359, 362, 363, 366, 368, 377, 378, 385, 399, 411, 417, 420, 434, 446, 447, 453, 464, 465, 466, 468, 473, 482, 486, 494, 500, 501, 507, 511, 512, 513, 515, 519, 525, 534, 544, 552, 553, 554, 560, 593, 596, 597, 603, 606, 614, 616, 617, 621, 622, 624, 626, 629, 662, 663, 669, 673, 674, 675, 682, 683, 684, 691, 694, 695, 698, 700, 704, 710, 712, 715, 721, 725]
+unlisted_pokemon = [107, 135, 136, 182, 186, 196, 197, 199, 237, 268, 269, 292, 368, 414, 470, 471, 475, 478, 700, 792, 842, 863, 867]
+
 created = False
+created1 = False
 
 c.execute("CREATE TABLE if not exists jokes(joke_id INTEGER PRIMARY KEY, content TEXT, character TEXT)")
 c.execute("CREATE TABLE if not exists heroes(hero_id INTEGER PRIMARY KEY, name TEXT, powerstats TEXT, bio TEXT, image_link TEXT)")
-c.execute("CREATE TABLE if not exists pokemon(pokemon_id INTEGER PRIMARY KEY, name TEXT, poke_type TEXT, stats TEXT, gen TEXT, bio TEXT, image_link TEXT)")
+c.execute("CREATE TABLE if not exists pokemon(pokemon_id INTEGER PRIMARY KEY, name TEXT, poke_type TEXT, stats TEXT, bio TEXT, image_link TEXT)")
 
-# to execute heroes table with all heroes
 # general method that can be used to get data easier
 def select_from(database, table, data_want, datagive, datatype_give):
     db = sqlite3.connect(database, check_same_thread=False)
@@ -140,6 +142,19 @@ def get_pokemon_image(pokemon_id):
     if pokemon_in_db(pokemon_id):
         return c.execute(f"SELECT image_link FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
     return False
+
+# to initialize pokemom into pokemon table
+created1 = pokemon_in_db(1)
+print(created1)
+if (not created1):
+    for i in range(1, 899):
+        try:
+            if(not i in unlisted_pokemon):
+                pokemon = apimethods.poke_info(i)
+                c.execute("INSERT INTO pokemon VALUES (?,?,?,?,?,?)", (i, str(pokemon[0]), str(pokemon[1]), str(pokemon[2]), str(pokemon[3]), str(pokemon[4])))
+        except:
+            print(f"{i} pokemon is not in the database")
+    created1 = True
     
 db.commit()
 db.close()
