@@ -181,6 +181,10 @@ ianJ -- 2022-12-14 11:10 PM
   - fixed method to parse poke api
     - bio contains which pokemon it evolves into and from
 ==============================================================
+kevinL -- 2022-12-15 11:00 PM
+--------------------------------------------------------------
+  - Added link to search page
+  - Created a search page
 
 karenS -- 2022-12-15 1:20 PM
 --------------------------------------------------------------
@@ -193,3 +197,10 @@ karenS -- 2022-12-15 4:30 PM
     - figured out how to display cards properly!!
     - may need to get rid of QR tag
     - need small images in database
+
+mahirR -- 2022-12-15 11:34 PM
+--------------------------------------------------------------
+  - moved all the inline js to a seperate js file
+    - linked the js files with all the html files
+  - finished adding all pokemon from api to database
+
