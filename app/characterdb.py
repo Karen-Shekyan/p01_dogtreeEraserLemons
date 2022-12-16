@@ -143,6 +143,24 @@ def get_pokemon_image(pokemon_id):
         return c.execute(f"SELECT image_link FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
     return False
 
+def get_all_ordered_pokemon():
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    a = c.execute("SELECT name FROM pokemon").fetchall()
+    list_of_pokemon = []
+    for x in a:
+        list_of_pokemon.append(x[0])
+    return list_of_pokemon
+
+def get_all_pokemon_id():
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    data = c.execute(f"SELECT pokemon_id FROM pokemon").fetchall()
+    ids = []
+    for x in data:
+        ids.append(x[0])
+    return ids
+
 # to initialize pokemom into pokemon table
 created1 = pokemon_in_db(1)
 print(created1)
