@@ -18,7 +18,7 @@ time spent:  hrs
   </head>
   <body>
 
-    < <nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <nav class="navbar sticky-top navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/home">
           <!-- CURRENT page title -->
@@ -40,7 +40,7 @@ time spent:  hrs
             </form>
             <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
             <script>
-              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }});
+              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }}, {{pokemons|safe}}, {{pokeid|safe}});
           </script>
             <a class="nav-link" href="/logout">Logout</a>
           </div>
@@ -57,6 +57,8 @@ time spent:  hrs
     {{Information}}
     <br>
     {{stats}}
+    <br>
+    {{type}}
   </body>
 
 </html>

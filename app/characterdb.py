@@ -129,6 +129,13 @@ def get_pokemon_poketype(pokemon_id):
         return c.execute(f"SELECT poke_type FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
     return False
 
+def get_pokemon_bio(pokemon_id):
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    if pokemon_in_db(pokemon_id):
+        return c.execute(f"SELECT bio FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
+    return False
+
 def get_pokemon_stats(pokemon_id):
     db = sqlite3.connect("character.db", check_same_thread=False)
     c = db.cursor()

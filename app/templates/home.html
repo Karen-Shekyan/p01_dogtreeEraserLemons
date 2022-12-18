@@ -40,7 +40,7 @@ time spent:  hrs
             </form>
             <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
             <script>
-              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }}); //passing in the list of heroes and their ids
+              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }}, {{pokemons|safe}}, {{pokeid|safe}}); //passing in the list of heroes and their ids
           </script>
             <a class="nav-link" href="/logout">Logout</a>
           </div>
