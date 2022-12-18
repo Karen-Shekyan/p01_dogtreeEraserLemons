@@ -1,4 +1,5 @@
 import requests, json
+import os
 
 def hero_info(hero_id):
     url = f"https://akabab.github.io/superhero-api/api/id/{hero_id}.json"
@@ -125,4 +126,23 @@ def poke_info(poke_id):
     bio = f"{name.capitalize()} is a {types_str} type pokemon. It is {height} decimeters tall and weighs {weight} hectograms. {name.capitalize()} can evolve into {evolves_to} and evolves from {evolves_from}. It can hold {held_items} and can be found at {locations}."
     return [name, types, base_stats, bio, sprite]
 
-# print(poke_info(1))
+def get_rand_jokes():
+    url = "https://dad-jokes.p.rapidapi.com/random/joke?count=5"
+    wd = os.path.dirname(os.path.realpath(__file__))
+    file = open(wd + "/keys/key_DadJokes.txt", "r")
+    apiKey = file.read()
+    print(apiKey)
+    headers = {
+        "X-RapidAPI-Key": f"{apiKey}",
+        "X-RapidAPI-Host": "dad-jokes.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers).json()
+    jokes = {}
+    for i in range(5):
+        id = response.get('body')[i]['_id']
+        setup = response.get('body')[i]['setup']
+        punchline = response.get('body')[i]['punchline']
+        nsfw = response.get('body')[i]['NSFW']
+        jokes[str(i)] = [id, setup, punchline, nsfw]
+    return jokes
