@@ -31,7 +31,7 @@
             </form>
             <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
             <script>
-              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }});
+              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }}, {{pokemons|safe}}, {{pokeid|safe}});
           </script>
             <a class="nav-link" href="/logout">Logout</a>
           </div>

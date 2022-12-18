@@ -15,14 +15,14 @@ def log_in():
 @app.route('/home')
 def home():
     if (session):
-        return render_template('home.html', heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
+         return render_template('home.html', heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
     else:
         return redirect('/')
 
 @app.route('/login', methods = ["POST"])
 def authenticate():
     if 'username' in session:
-        return render_template('home.html', heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
+        return render_template('home.html', heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
@@ -41,7 +41,7 @@ def authenticate():
 @app.route('/signup', methods = ["POST"])
 def sign_up():
     if 'username' in session:
-        return render_template('home.html', heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
+        return render_template('home.html', heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
@@ -74,7 +74,31 @@ def display(hero_id):
             temp = elements.split(":")
             pstats[temp[0][1:-1]] = temp[1][1:]
         name = get_hero_name(hero_id)
-        return render_template('hero.html', Information = bio, picture = image, stats = pstats, title = name, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
+        return render_template('hero.html', Information = bio, picture = image, stats = pstats, title = name, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
+@app.route('/pokemon/<int:poke_id>')
+def display2(poke_id):
+    if (not hero_in_db(poke_id)):
+        return render_template('noExist.html')
+    else:
+        bio = get_pokemon_bio(poke_id)
+        image = get_pokemon_image(poke_id)
+        print(image)
+        powerstats = get_pokemon_stats(poke_id)
+        powerstats = powerstats[1: -1]
+        powerstats = powerstats.split(",")
+        pstats = {}
+        count = 0
+        for elements in powerstats:
+            temp = elements.split(":")
+            if(count == 0):
+                pstats[temp[0][1:-1]] = temp[1][1:]
+            else:
+                pstats[temp[0][2:-1]] = temp[1][1:]
+            count+=1
+        print(powerstats)
+        name = get_pokemon_name(poke_id)
+        type = get_pokemon_poketype(poke_id)
+        return render_template('pokemon.html', Information = bio, picture = image, stats = pstats, title = name, type=type, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
 
 @app.route('/logout', methods = ['GET', 'POST'])
 def logout():
@@ -86,11 +110,14 @@ def logout():
 def userprofile():
     if 'username' not in session:
         return redirect('http://127.0.0.1:5000/')
-    return render_template('user_profile.html', username=session['username'], favorites=get_list_of_saved_jokes(session['username']), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
+    return render_template('user_profile.html', username=session['username'], favorites=get_list_of_saved_jokes(session['username']), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), edit=True)
 
 @app.route('/profile/<user>')
 def qruserprofile(user):
-    return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id())
+    edit = False
+    if(session['username'] == user):
+        edit = True
+    return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), edit = edit, pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
 
 @app.route('/joke')
 def joke():
@@ -116,7 +143,7 @@ def search():
                 search_results_id.append(get_hero_id(elements))
         length = len(search_results_id)
         #return render_template('search.html')
-        return render_template('search.html', leng = length, a = search_results, b = search_results_id)
+        return render_template('search.html', leng = length, a = search_results, b = search_results_id, heroesid = get_all_hero_id(), edit = edit, pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
 
 if __name__ == '__main__':
 	app.debug = True
