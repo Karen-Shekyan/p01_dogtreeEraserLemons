@@ -56,6 +56,14 @@ time spent:  hrs
       <br>
       <br>
     {% endfor %}
+    {% for elements in range(0, pleng)%}
+      {{c[elements]}}
+      <form action=/pokemon/{{d[elements]}}>
+        <input type="submit" value="Go to article"></input>
+      </form>
+      <br>
+      <br>
+    {% endfor %}
     </p>
     <br>
   </body>

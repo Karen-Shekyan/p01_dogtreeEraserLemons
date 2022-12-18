@@ -218,3 +218,9 @@ ianJ -- 2022-12-18 2:30 AM
      - jokes need to be added into a table and nsfw jokes need to be filtered out
   - added a key_DadJokes.txt file with an api key
 ==============================================================
+kevinL -- 2022-12-18 6:00 PM
+--------------------------------------------------------------
+  - Added features to search for pokemon
+  - made a pokemon page
+  - imported data to pokemon page
+==============================================================

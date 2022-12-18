@@ -134,16 +134,25 @@ def search():
         character = request.form['search']
         # print(character)
         heroes = get_all_ordered_heroes()
+        pokemon = get_all_ordered_pokemon()
         search_results = []
         search_results_id = []
+        Psearch_results = []
+        Psearch_results_id = []
         for elements in heroes:
             if(character.upper().strip() in elements.upper()):
                 search_results.append(elements)
                 # print(elements)
                 search_results_id.append(get_hero_id(elements))
+        for elements in pokemon:
+            if(character.upper().strip() in elements.upper()):
+                Psearch_results.append(elements)
+                # print(elements)
+                Psearch_results_id.append(get_pokemon_id(elements))
         length = len(search_results_id)
+        Plength = len(Psearch_results_id)
         #return render_template('search.html')
-        return render_template('search.html', leng = length, a = search_results, b = search_results_id, heroesid = get_all_hero_id(), edit = edit, pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
+        return render_template('search.html', pleng = Plength,c = Psearch_results, d=Psearch_results_id, leng = length, a = search_results, b = search_results_id, heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
 
 if __name__ == '__main__':
 	app.debug = True
