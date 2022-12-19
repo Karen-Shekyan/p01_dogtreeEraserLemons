@@ -181,7 +181,7 @@ if (not created1):
         except:
             print(f"{i} pokemon is not in the database")
     created1 = True
-    
+
 # ----------------------------- the dad joke section ------------------------------
 def dad_joke_in_db(joke_id):
     db = sqlite3.connect("character.db", check_same_thread=False)
@@ -219,18 +219,18 @@ def get_realid_from_id(joke_id):
     return False
 
 # initialization of jokes into db
-counter = 1
-for i in range(1, 51):
-    joke = apimethods.get_rand_jokes()
-    for j in range(len(joke)):
-        try:
-            if not dad_joke_in_db(joke[j][0]) and joke[j][3] != True:
-                c.execute("INSERT INTO jokes VALUES (?,?,?,?)", (counter, joke[j][1], joke[j][2], joke[j][0]))
-                counter+=1
-                print(f"added {joke[j][0]}")
-        except:
-            print(f"skipped {joke[j][0]}")
-    
+# counter = 1
+# for i in range(1, 51):
+#     joke = apimethods.get_rand_jokes()
+#     for j in range(len(joke)):
+#         try:
+#             if not dad_joke_in_db(joke[j][0]) and joke[j][3] != True:
+#                 c.execute("INSERT INTO jokes VALUES (?,?,?,?)", (counter, joke[j][1], joke[j][2], joke[j][0]))
+#                 counter+=1
+#                 print(f"added {joke[j][0]}")
+#         except:
+#             print(f"skipped {joke[j][0]}")
+
 db.commit()
 db.close()
 
