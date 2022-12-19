@@ -224,3 +224,9 @@ mahirR -- 2022-12-18 9:35 PM
   - added a dad_joke_in_db() method
   - added getter methods for dad jokes
 ==============================================================
+kevinL -- 2022-12-18 6:00 PM
+--------------------------------------------------------------
+  - Added features to search for pokemon
+  - made a pokemon page
+  - imported data to pokemon page
+==============================================================

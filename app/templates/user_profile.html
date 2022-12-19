@@ -40,7 +40,7 @@ time spent:  hrs
             </form>
             <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
             <script>
-              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }});
+              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }}, {{pokemons|safe}}, {{pokeid|safe}});
           </script>
             <a class="nav-link" href="/logout">Logout</a>
           </div>
@@ -62,8 +62,10 @@ time spent:  hrs
           <div class="p-3 border-0">
             <b>Username:</b> {{username}} <br>
             <b>Email:</b> <br>
-            <button class="btn btn-outline-success" type="submit">Edit</button>
-            <br><br>
+            {% if edit %}
+              <button class="btn btn-outline-success" type="submit">Edit</button>
+            {% endif %}
+              <br><br>
 
             <img src="https://qrtag.net/api/qr.png?url=http://127.0.0.1:5000/profile/{{username}}" alt="qrtag">
           </div>

@@ -40,7 +40,7 @@ time spent:  hrs
             </form>
             <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
             <script>
-              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }});
+              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }}, {{pokemons|safe}}, {{pokeid|safe}});
             </script>
             <a class="nav-link" href="/logout">Logout</a>
           </div>
@@ -51,6 +51,14 @@ time spent:  hrs
       {% for elements in range(0, leng)%}
       {{a[elements]}}
       <form action=/hero/{{b[elements]}}>
+        <input type="submit" value="Go to article"></input>
+      </form>
+      <br>
+      <br>
+    {% endfor %}
+    {% for elements in range(0, pleng)%}
+      {{c[elements]}}
+      <form action=/pokemon/{{d[elements]}}>
         <input type="submit" value="Go to article"></input>
       </form>
       <br>
