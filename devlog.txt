@@ -181,15 +181,18 @@ ianJ -- 2022-12-14 11:10 PM
   - fixed method to parse poke api
     - bio contains which pokemon it evolves into and from
 ==============================================================
+
 kevinL -- 2022-12-15 11:00 PM
 --------------------------------------------------------------
   - Added link to search page
   - Created a search page
+==============================================================
 
 karenS -- 2022-12-15 1:20 PM
 --------------------------------------------------------------
   - added edit button to profile
   - created basic /joke route
+==============================================================
 
 karenS -- 2022-12-15 4:30 PM
 --------------------------------------------------------------
@@ -197,10 +200,33 @@ karenS -- 2022-12-15 4:30 PM
     - figured out how to display cards properly!!
     - may need to get rid of QR tag
     - need small images in database
+==============================================================
 
 mahirR -- 2022-12-15 11:34 PM
 --------------------------------------------------------------
   - moved all the inline js to a seperate js file
     - linked the js files with all the html files
   - finished adding all pokemon from api to database
+==============================================================
 
+ianJ -- 2022-12-18 2:30 AM
+--------------------------------------------------------------
+  - added get_rand_jokes() method in apimethods
+    - it returns a dict with 5 keys numbered from 0 to 4
+    - each value is a list of a joke's id, setup, punchline, and nsfw
+  - To be done:
+     - jokes need to be added into a table and nsfw jokes need to be filtered out
+  - added a key_DadJokes.txt file with an api key
+
+kevinL -- 2022-12-18 6:00 PM
+--------------------------------------------------------------
+  - Added features to search for pokemon
+  - made a pokemon page
+  - imported data to pokemon page
+
+mahirR -- 2022-12-18 9:35 PM
+--------------------------------------------------------------
+  - made initialization of jokes into the db
+  - added a dad_joke_in_db() method
+  - added getter methods for dad jokes
+==============================================================

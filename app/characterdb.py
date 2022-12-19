@@ -9,7 +9,7 @@ unlisted_pokemon = [107, 135, 136, 182, 186, 196, 197, 199, 237, 268, 269, 292, 
 created = False
 created1 = False
 
-c.execute("CREATE TABLE if not exists jokes(joke_id INTEGER PRIMARY KEY, content TEXT, character TEXT)")
+c.execute("CREATE TABLE if not exists jokes(joke_id INTEGER PRIMARY KEY, joke TEXT, punchline TEXT, api_joke_id TEXT)")
 c.execute("CREATE TABLE if not exists heroes(hero_id INTEGER PRIMARY KEY, name TEXT, powerstats TEXT, bio TEXT, image_link TEXT)")
 c.execute("CREATE TABLE if not exists pokemon(pokemon_id INTEGER PRIMARY KEY, name TEXT, poke_type TEXT, stats TEXT, bio TEXT, image_link TEXT)")
 
@@ -23,16 +23,16 @@ def select_from(database, table, data_want, datagive, datatype_give):
     else:
         return 0
 
-def add_joke(content, character, joke_id):
-    db = sqlite3.connect("character.db", check_same_thread=False)
-    c = db.cursor()
-    if select_from("character.db", "jokes", "joke_id", joke_id, "joke_id") == 0:
-        c.execute(f"INSERT INTO jokes VALUES (?,?,?)", (joke_id, content, character))
-        print("Joke added")
-        db.commit() #save changes
-        db.close()
-    else:
-        print("Joke already in database")
+# def add_joke(content, character, joke_id):
+#     db = sqlite3.connect("character.db", check_same_thread=False)
+#     c = db.cursor()
+#     if select_from("character.db", "jokes", "joke_id", joke_id, "joke_id") == 0:
+#         c.execute(f"INSERT INTO jokes VALUES (?,?,?)", (joke_id, content, character))
+#         print("Joke added")
+#         db.commit() #save changes
+#         db.close()
+#     else:
+#         print("Joke already in database")
 
 def hero_in_db(hero_id):
     db = sqlite3.connect("character.db", check_same_thread=False)
@@ -129,6 +129,13 @@ def get_pokemon_poketype(pokemon_id):
         return c.execute(f"SELECT poke_type FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
     return False
 
+def get_pokemon_bio(pokemon_id):
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    if pokemon_in_db(pokemon_id):
+        return c.execute(f"SELECT bio FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
+    return False
+
 def get_pokemon_stats(pokemon_id):
     db = sqlite3.connect("character.db", check_same_thread=False)
     c = db.cursor()
@@ -143,6 +150,24 @@ def get_pokemon_image(pokemon_id):
         return c.execute(f"SELECT image_link FROM pokemon WHERE pokemon_id = '{pokemon_id}'").fetchall()[0][0]
     return False
 
+def get_all_ordered_pokemon():
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    a = c.execute("SELECT name FROM pokemon").fetchall()
+    list_of_pokemon = []
+    for x in a:
+        list_of_pokemon.append(x[0])
+    return list_of_pokemon
+
+def get_all_pokemon_id():
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    data = c.execute(f"SELECT pokemon_id FROM pokemon").fetchall()
+    ids = []
+    for x in data:
+        ids.append(x[0])
+    return ids
+
 # to initialize pokemom into pokemon table
 created1 = pokemon_in_db(1)
 print(created1)
@@ -152,9 +177,61 @@ if (not created1):
             if(not i in unlisted_pokemon):
                 pokemon = apimethods.poke_info(i)
                 c.execute("INSERT INTO pokemon VALUES (?,?,?,?,?,?)", (i, str(pokemon[0]), str(pokemon[1]), str(pokemon[2]), str(pokemon[3]), str(pokemon[4])))
+                print(i)
         except:
             print(f"{i} pokemon is not in the database")
     created1 = True
-    
+
+# ----------------------------- the dad joke section ------------------------------
+def dad_joke_in_db(joke_id):
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    if select_from("character.db", "jokes", "joke_id", joke_id, "joke_id") != 0:
+        return True
+    return False
+
+# def add_joke(joke_id, joke, punchline):
+#     db = sqlite3.connect("character.db", check_same_thread=False)
+#     c = db.cursor()
+#     if not dad_joke_in_db(joke_id):
+#         c.execute("INSERT INTO jokes VALUES (?,?,?)", (joke_id, joke, punchline))
+#     return False
+
+def get_joke_from_id(joke_id):
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    if select_from("character.db", "jokes", "joke_id", joke_id, "joke_id") != 0:
+        return c.execute(f"SELECT joke FROM jokes WHERE joke_id = '{joke_id}'").fetchall()[0][0]
+    return False
+
+def get_punchline_from_id(joke_id):
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    if select_from("character.db", "jokes", "joke_id", joke_id, "joke_id") != 0:
+        return c.execute(f"SELECT punchline FROM jokes WHERE joke_id = '{joke_id}'").fetchall()[0][0]
+    return False
+
+def get_realid_from_id(joke_id):
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    if select_from("character.db", "jokes", "joke_id", joke_id, "joke_id") != 0:
+        return c.execute(f"SELECT api_joke_id FROM jokes WHERE joke_id = '{joke_id}'").fetchall()[0][0]
+    return False
+
+# initialization of jokes into db
+# counter = 1
+# for i in range(1, 51):
+#     joke = apimethods.get_rand_jokes()
+#     for j in range(len(joke)):
+#         try:
+#             if not dad_joke_in_db(joke[j][0]) and joke[j][3] != True:
+#                 c.execute("INSERT INTO jokes VALUES (?,?,?,?)", (counter, joke[j][1], joke[j][2], joke[j][0]))
+#                 counter+=1
+#                 print(f"added {joke[j][0]}")
+#         except:
+#             print(f"skipped {joke[j][0]}")
+
 db.commit()
 db.close()
+
+# print(get_joke_from_id(1))
