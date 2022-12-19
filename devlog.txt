@@ -217,4 +217,10 @@ ianJ -- 2022-12-18 2:30 AM
   - To be done:
      - jokes need to be added into a table and nsfw jokes need to be filtered out
   - added a key_DadJokes.txt file with an api key
+
+mahirR -- 2022-12-18 9:35 PM
+--------------------------------------------------------------
+  - made initialization of jokes into the db
+  - added a dad_joke_in_db() method
+  - added getter methods for dad jokes
 ==============================================================

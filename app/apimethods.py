@@ -131,7 +131,7 @@ def get_rand_jokes():
     wd = os.path.dirname(os.path.realpath(__file__))
     file = open(wd + "/keys/key_DadJokes.txt", "r")
     apiKey = file.read()
-    print(apiKey)
+    # print(apiKey)
     headers = {
         "X-RapidAPI-Key": f"{apiKey}",
         "X-RapidAPI-Host": "dad-jokes.p.rapidapi.com"
@@ -144,5 +144,5 @@ def get_rand_jokes():
         setup = response.get('body')[i]['setup']
         punchline = response.get('body')[i]['punchline']
         nsfw = response.get('body')[i]['NSFW']
-        jokes[str(i)] = [id, setup, punchline, nsfw]
+        jokes[i] = [id, setup, punchline, nsfw]
     return jokes
