@@ -230,3 +230,10 @@ mahirR -- 2022-12-18 9:35 PM
   - added a dad_joke_in_db() method
   - added getter methods for dad jokes
 ==============================================================
+
+mahirR -- 2022-12-19 2:35 PM
+--------------------------------------------------------------
+  - added search scrolling functionality for javascript
+  - fixed the database
+    - database is now setup and doesn't need initial setup anymore
+==============================================================
