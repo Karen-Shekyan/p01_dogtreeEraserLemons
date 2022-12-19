@@ -1,3 +1,17 @@
+/*
+This is a JavaScript function that implements an autocomplete feature for an input field. When the user begins typing in the input field, the function searches through two arrays: arr and parr. 
+For each element in the arrays that contains the input value as a substring, the function creates a new div element and appends it to a list of autocomplete suggestions. 
+The div element also contains a link to a page with the corresponding information for that element. The function also handles keyboard navigation through the list of autocomplete suggestions.
+
+The function takes in four arguments:
+
+inp is the input field element.
+arr is an array of strings representing autocomplete suggestions for the input field.
+heroidarr is an array of integers corresponding to the hero ids for each element in arr.
+parr is an array of strings representing autocomplete suggestions for the input field.
+pid is an array of integers corresponding to the pokemon ids for each element in parr.
+*/
+
 let autocomplete = (inp, arr, heroidarr, parr, pid) => {
   var heroid = heroidarr;
   let currentFocus;
@@ -11,6 +25,8 @@ let autocomplete = (inp, arr, heroidarr, parr, pid) => {
     a = document.createElement("DIV");
     a.setAttribute("id", this.id + "autocomplete-list");
     a.setAttribute("class", "autocomplete-items list-group text-left");
+    a.style.maxHeight = "400px";
+    a.style.overflowY = "scroll";
     this.parentNode.appendChild(a);
     for (i = 0; i < arr.length; i++) {
       if ((arr[i].toUpperCase()).indexOf(val.toUpperCase()) > -1) {
@@ -29,6 +45,9 @@ let autocomplete = (inp, arr, heroidarr, parr, pid) => {
           closeAllLists();
         });
         a.appendChild(b);
+      }
+      if (i === 9) {
+        break;
       }
     }
     for (i = 0; i < parr.length; i++) {
@@ -96,12 +115,3 @@ document.addEventListener("click", function(e) {
 });
 }
 
-// function addInputSubmitEvent(form, input) {
-//   input.onkeydown = function(e) {
-//       e = e || window.event;
-//       if (e.keyCode == 13) {
-//           form.submit();
-//           return false;
-//       }
-//   };
-// }

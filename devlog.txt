@@ -233,6 +233,12 @@ mahirR -- 2022-12-18 9:35 PM
   - added getter methods for dad jokes
 ==============================================================
 
+mahirR -- 2022-12-19 2:35 PM
+--------------------------------------------------------------
+  - added search scrolling functionality for javascript
+  - fixed the database
+    - database is now setup and doesn't need initial setup anymore
+    
 karenS -- 2022-12-19 4:00 PM
 --------------------------------------------------------------
   - formatted search page
@@ -241,3 +247,4 @@ karenS -- 2022-12-19 4:00 PM
     - similar layout to heroes, will make types more clear w/
       css later
   - added favorite button to jokes
+==============================================================

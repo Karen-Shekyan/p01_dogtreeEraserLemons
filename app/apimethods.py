@@ -139,10 +139,13 @@ def get_rand_jokes():
 
     response = requests.get(url, headers=headers).json()
     jokes = {}
-    for i in range(5):
-        id = response.get('body')[i]['_id']
-        setup = response.get('body')[i]['setup']
-        punchline = response.get('body')[i]['punchline']
-        nsfw = response.get('body')[i]['NSFW']
-        jokes[i] = [id, setup, punchline, nsfw]
+    try:
+        for i in range(5):
+            id = response.get('body')[i]['_id']
+            setup = response.get('body')[i]['setup']
+            punchline = response.get('body')[i]['punchline']
+            nsfw = response.get('body')[i]['NSFW']
+            jokes[i] = [id, setup, punchline, nsfw]
+    except:
+        pass
     return jokes
