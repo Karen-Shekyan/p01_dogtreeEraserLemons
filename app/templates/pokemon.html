@@ -48,17 +48,65 @@ time spent:  hrs
       </div>
     </nav>
 
-    <p>A project created by Team <i>Dogtree Eraser Lemons</i></p>
-    <p>Roster: Karen Shekyan, Kevin Liu, Mahir Riki, Ian Jiang</p>
-    <br>
 
-    <img src= {{picture}} >
-    <br>
-    {{Information}}
-    <br>
-    {{stats}}
-    <br>
-    {{type}}
+
+    <div class="container text-left">
+      <div class="row text-center">
+        <div class="col">
+          <div class="p-3 title border-0 bg-transparent">
+            <h2> {{title|title}} </h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="row text-left">
+            <div class="col">
+              <h4> Information </h4>
+              {{Information}}
+            </div>
+          </div>
+          <div class="row text-left">
+            <div class="col">
+              <br>
+              <h5> HP </h5>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["hp"]|int / 255 * 100}}%" aria-valuenow="{{stats["hp"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["hp"]}} </div>
+              </div>
+              <h5> Attack </h5>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["attack"]|int / 255 * 100}}%" aria-valuenow="{{stats["attack"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["attack"]}} </div>
+              </div>
+              <h5> Defense </h5>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["defense"]|int / 255 * 100}}%" aria-valuenow="{{stats["defense"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["defense"]}} </div>
+              </div>
+              <h5> Sp. Atk </h5>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["special-attack"]|int / 255 * 100}}%" aria-valuenow="{{stats["special-attack"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["special-attack"]}} </div>
+              </div>
+              <h5> Sp. Def </h5>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-label="power" style="width: {{stats["special-defense"]|int / 255 * 100}}%" aria-valuenow="{{stats["special-defense"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["special-defense"]}} </div>
+              </div>
+              <h5> Speed </h5>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["speed"]|int / 255 * 100}}%" aria-valuenow="{{stats["speed"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["speed"]}} </div>
+              </div>
+              <h5> Total: {{stats["hp"]|int + stats["attack"]|int + stats["defense"]|int + stats["special-attack"]|int + stats["special-defense"]|int + stats["speed"]|int}} </h5>
+              <br>
+            </div>
+          </div>
+        </div>
+
+        <div class="col text-center">
+          <img src= {{picture}} width=200 height=200>
+          <br>
+          {{type}}
+        </div>
+      </div>
+    </div>
+
   </body>
 
 </html>

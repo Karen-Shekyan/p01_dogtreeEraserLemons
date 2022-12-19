@@ -213,9 +213,11 @@ ianJ -- 2022-12-18 2:30 AM
 --------------------------------------------------------------
   - added get_rand_jokes() method in apimethods
     - it returns a dict with 5 keys numbered from 0 to 4
-    - each value is a list of a joke's id, setup, punchline, and nsfw
+    - each value is a list of a joke's id, setup, punchline,
+      and nsfw
   - To be done:
-     - jokes need to be added into a table and nsfw jokes need to be filtered out
+     - jokes need to be added into a table and nsfw jokes need
+       to be filtered out
   - added a key_DadJokes.txt file with an api key
 
 kevinL -- 2022-12-18 6:00 PM
@@ -230,3 +232,12 @@ mahirR -- 2022-12-18 9:35 PM
   - added a dad_joke_in_db() method
   - added getter methods for dad jokes
 ==============================================================
+
+karenS -- 2022-12-19 4:00 PM
+--------------------------------------------------------------
+  - formatted search page
+    - results displayed in table as links
+  - formatted pokemon page
+    - similar layout to heroes, will make types more clear w/
+      css later
+  - added favorite button to jokes
