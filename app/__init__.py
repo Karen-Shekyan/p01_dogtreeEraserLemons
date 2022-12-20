@@ -166,7 +166,7 @@ def search():
         length = len(search_results_id)
         Plength = len(Psearch_results_id)
         #return render_template('search.html')
-        return render_template('search.html', pleng = Plength , c = Psearch_results, d = Psearch_results_id, leng = length, a = search_results, b = search_results_id, heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
+        return render_template('search.html', pleng = Plength, c = Psearch_results, d = Psearch_results_id, leng = length, a = search_results, b = search_results_id, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
 
 if __name__ == '__main__':
 	app.debug = True
