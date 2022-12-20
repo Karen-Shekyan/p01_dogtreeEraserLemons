@@ -218,6 +218,13 @@ def get_realid_from_id(joke_id):
         return c.execute(f"SELECT api_joke_id FROM jokes WHERE joke_id = '{joke_id}'").fetchall()[0][0]
     return False
 
+def get_random_joke_punchline():
+    db = sqlite3.connect("character.db", check_same_thread=False)
+    c = db.cursor()
+    joke = c.execute(f"SELECT joke FROM jokes ORDER BY RANDOM() LIMIT 1").fetchall()[0][0]
+    punchline = c.execute(f"SELECT punchline FROM jokes WHERE joke = '{joke}'").fetchall()[0][0]
+    return [joke, punchline]
+    
 # initialization of jokes into db
 counter = 1
 for i in range(1, 51):

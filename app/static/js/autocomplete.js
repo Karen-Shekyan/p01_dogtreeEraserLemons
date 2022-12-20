@@ -1,15 +1,14 @@
 /*
-This is a JavaScript function that implements an autocomplete feature for an input field. When the user begins typing in the input field, the function searches through two arrays: arr and parr. 
+This implements an autocomplete feature for an input field. When the user begins typing in the input field, the function searches through two arrays: arr and parr. 
 For each element in the arrays that contains the input value as a substring, the function creates a new div element and appends it to a list of autocomplete suggestions. 
 The div element also contains a link to a page with the corresponding information for that element. The function also handles keyboard navigation through the list of autocomplete suggestions.
 
 The function takes in four arguments:
-
-inp is the input field element.
-arr is an array of strings representing autocomplete suggestions for the input field.
-heroidarr is an array of integers corresponding to the hero ids for each element in arr.
-parr is an array of strings representing autocomplete suggestions for the input field.
-pid is an array of integers corresponding to the pokemon ids for each element in parr.
+  - inp : input field element.
+  - arr : array of strings representing autocomplete suggestions for the input field
+  - heroidarr : array of integers corresponding to the hero ids for each element in arr
+  - parr : array of strings representing autocomplete suggestions for the input field
+  - pid : array of integers corresponding to the pokemon ids for each element in parr
 */
 
 let autocomplete = (inp, arr, heroidarr, parr, pid) => {

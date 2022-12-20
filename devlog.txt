@@ -235,7 +235,7 @@ mahirR -- 2022-12-18 9:35 PM
 
 mahirR -- 2022-12-19 2:35 PM
 --------------------------------------------------------------
-  - added search scrolling functionality for javascript
+  - added search scrolling functionality with javascript
   - fixed the database
     - database is now setup and doesn't need initial setup anymore
     
@@ -247,7 +247,6 @@ karenS -- 2022-12-19 4:00 PM
     - similar layout to heroes, will make types more clear w/
       css later
   - added favorite button to jokes
-==============================================================
 
 ianJ --2022-12-19 7:40 PM
 --------------------------------------------------------------
