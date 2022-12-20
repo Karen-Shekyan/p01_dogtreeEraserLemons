@@ -13,7 +13,7 @@ def hero_info(hero_id):
     if placeOfBirth == "-":
         placeOfBirth = ""
     else:
-        placeOfBirth = "borned in "+placeOfBirth
+        placeOfBirth = "born in "+placeOfBirth
     gender = data["appearance"]["gender"]
     if(gender == "Male"):
         pronoun = "He"
@@ -48,6 +48,8 @@ def hero_info(hero_id):
         groupAffiliation = "with no one"
     else:
         groupAffiliation = "as a " + groupAffiliation
+    if alignedment =="-":
+        alignedment = "neutral"
     bio = f'{FullName} or {name} is a {alignedment} aligned character {placeOfBirth}. {name} has the appearance of a {race}{gender} {height} {weight}with {eyeColor} eyes and {hairColor}. {pronoun} works as a {occupation}. {pronoun} first appeared in {firstAppearance} by {publisher}. {pronoun} is affiliated {groupAffiliation}.'
     image = data["images"]["md"]
     return [name, powerstats, bio, image]
