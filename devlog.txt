@@ -248,3 +248,12 @@ karenS -- 2022-12-19 4:00 PM
       css later
   - added favorite button to jokes
 ==============================================================
+
+ianJ --2022-12-19 7:40 PM
+--------------------------------------------------------------
+  - added things to the /joke route
+  - joke page now displays a joke
+    - has images of pokemon and superhero
+    - the cards are linked to the respective pokemon/superhero
+    - the cards display the character's bio
+==============================================================
