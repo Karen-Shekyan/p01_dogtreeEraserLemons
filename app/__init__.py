@@ -76,6 +76,7 @@ def display(hero_id):
             pstats[temp[0][1:-1]] = temp[1][1:]
         name = get_hero_name(hero_id)
         return render_template('hero.html', Information = bio, picture = image, stats = pstats, title = name, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
+
 @app.route('/pokemon/<int:poke_id>')
 def display2(poke_id):
     if (not hero_in_db(poke_id)):
@@ -111,7 +112,7 @@ def logout():
 def userprofile():
     if 'username' not in session:
         return redirect('http://127.0.0.1:5000/')
-    return render_template('user_profile.html', username=session['username'], favorites=get_list_of_saved_jokes(session['username']), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), edit=True)
+    return render_template('user_profile.html', username=session['username'], email=get_email(session['username']), favorites=get_list_of_saved_jokes(session['username']), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), edit=True)
 
 @app.route('/profile/<user>')
 def qruserprofile(user):
@@ -166,7 +167,7 @@ def search():
         length = len(search_results_id)
         Plength = len(Psearch_results_id)
         #return render_template('search.html')
-        return render_template('search.html', pleng = Plength, c = Psearch_results, d = Psearch_results_id, leng = length, a = search_results, b = search_results_id, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
+        return render_template('search.html', pleng = Plength , c = Psearch_results, d = Psearch_results_id, leng = length, a = search_results, b = search_results_id, heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
 
 if __name__ == '__main__':
 	app.debug = True

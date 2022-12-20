@@ -41,6 +41,17 @@ a:link {
   font-size: 18px;
 }
 
+.joke {
+  line-height: 20vw;
+  height: 20vw;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
 /* for search component */
 .autocomplete {
   position: relative;

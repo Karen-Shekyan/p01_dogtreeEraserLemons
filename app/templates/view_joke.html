@@ -58,36 +58,44 @@ time spent:  hrs
         <div class="col-6">
           <div class="p-3 border-0">
 
-            <!-- NEED SMALL IMAGES HERE -->
             <div class="container text-center">
               <div class="row gy-4 gx-4">
 
                 <div class="col-6">
-                  <img src={{hero_png}} width="200" height="200">
+                  <img src={{hero_png}} style="width:20vw; height:20vw;">
                 </div>
 
-                <div class="col-6">
-                  {{hero}}: {{setup}}
-                </div>
-
-
-                <div class="col-6">
-                <img src={{poke_png}} width="200" height="200">
-                </div>
-
-                <div class="col-6">
-                  {{poke.capitalize()}}: {{poke.capitalize()}}!!
-                </div>
-
-                <div class="col-6">
-                  <img src = {{hero_png}} width="200" height="200">
-                </div>
-
-                <div class="col-6">
-                  {{hero}}: {{punchline}}
+                <div class="col-6 joke">
+                  <span> {{hero}}: {{setup}} </span>
                 </div>
 
               </div>
+
+              <div class="row gy-4 gx-4">
+
+                <div class="col-6">
+                <img src={{poke_png}} style="width:20vw; height:20vw;">
+                </div>
+
+                <div class="col-6 joke">
+                  <span> {{poke.capitalize()}}: {{poke.capitalize()}}!! </span>
+                </div>
+
+              </div>
+
+              <div class="row gy-4 gx-4">
+
+                <div class="col-6">
+                  <img src = {{hero_png}} style="width:20vw; height:20vw;">
+                </div>
+
+                <div class="col-6 joke">
+                  <span> {{hero}}: {{punchline}} </span>
+                </div>
+
+              </div>
+
+
 
             </div>
 
@@ -111,14 +119,13 @@ time spent:  hrs
 
             <div class="container text-center">
               <div class="row row-cols-auto gy-4 gx-4">
-
+  <!-- REMOVING THE COMMENTS BELOW BREAKS STUFF. LEAVE THEM WHERE THEY ARE -->
                 <div class="col">
                   <a href="/hero/{{hero_id}}" <!-- CHANGE TO HERO ID -->
                     <div class="card" style="width: 18vw;">
                       <img src="{{hero_png}}" class="card-img-top" width="200" height="200">
                       <div class="card-body">
                         <p class="card-text">
-                          <!-- MAKE THIS INFO FOR HERO -->
                           {{hero_info}}
                         </p>
                       </div>
@@ -132,7 +139,6 @@ time spent:  hrs
                       <img src="{{poke_png}}" class="card-img-top" width="200" height="200">
                       <div class="card-body">
                         <p class="card-text">
-                          <!-- MAKE THIS INFO FOR POKEMON -->
                           {{poke_info}}
                         </p>
                       </div>

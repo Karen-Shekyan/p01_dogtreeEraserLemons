@@ -260,3 +260,5 @@ ianJ --2022-12-19 7:40 PM
 karenS -- 2022-12-20 4:00 PM
 --------------------------------------------------------------
   - polished pokemon page
+  - made email display on profile page
+  - debugging joke page...
