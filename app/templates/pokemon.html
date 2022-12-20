@@ -102,7 +102,24 @@ time spent:  hrs
         <div class="col text-center">
           <img src= {{picture}} width=200 height=200>
           <br>
-          {{type}}
+
+          <div class="container text-left">
+            <div class="row text-center">
+              {% set list = type.split(', ') %}
+              {% for element in list %}
+                {% set element = element.replace('[', '') %}
+                {% set element = element.replace(']', '') %}
+                {% set element = element.replace("'", '') %}
+
+                    <div class="col">
+                      <div class={{element}}>
+                        {{element|title}}
+                      </div>
+                    </div>
+              {% endfor %}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

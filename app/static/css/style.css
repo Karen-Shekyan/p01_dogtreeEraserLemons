@@ -73,3 +73,168 @@ a:link {
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
+
+
+/* for pokemon types */
+
+.bug {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #a8b820;
+}
+
+.dark {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #705848;
+}
+
+.dragon {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #7038f8;
+}
+
+.electric {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #f8d030;
+}
+
+.fairy {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #ee99ac;
+}
+
+.fighting {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #c03028;
+}
+
+.fire {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #f08030;
+}
+
+.flying {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #a890f0;
+}
+
+.ghost {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #705898;
+}
+
+.grass {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #78c850;
+}
+
+.ground {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #e0c068;
+}
+
+.ice {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #98d8d8;
+}
+
+.normal {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #a8a878;
+}
+
+.poison {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #a040a0;
+}
+
+.psychic {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #f85888;
+}
+
+.rock {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #b8a038;
+}
+
+.steel {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #b8b8d0;
+}
+
+.water {
+  font-size: 20px;
+  border-radius: 17px;
+  color: white;
+  border: 1px solid black;
+
+  background-color: #6890f0;
+}

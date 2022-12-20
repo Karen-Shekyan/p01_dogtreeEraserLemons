@@ -238,7 +238,7 @@ mahirR -- 2022-12-19 2:35 PM
   - added search scrolling functionality with javascript
   - fixed the database
     - database is now setup and doesn't need initial setup anymore
-    
+
 karenS -- 2022-12-19 4:00 PM
 --------------------------------------------------------------
   - formatted search page
@@ -256,3 +256,7 @@ ianJ --2022-12-19 7:40 PM
     - the cards are linked to the respective pokemon/superhero
     - the cards display the character's bio
 ==============================================================
+
+karenS -- 2022-12-20 4:00 PM
+--------------------------------------------------------------
+  - polished pokemon page
