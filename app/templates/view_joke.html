@@ -63,28 +63,28 @@ time spent:  hrs
               <div class="row gy-4 gx-4">
 
                 <div class="col-6">
-                  <img src="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/1-a-bomb.jpg" width="200" height="200">
+                  <img src={{hero_png}} width="200" height="200">
                 </div>
 
                 <div class="col-6">
-                  JOKE PART 1
+                  {{hero}}: {{setup}}
                 </div>
 
 
                 <div class="col-6">
-                  POKEMON IMAGE
+                <img src={{poke_png}} width="200" height="200">
                 </div>
 
                 <div class="col-6">
-                  JOKE PART 2
+                  {{poke.capitalize()}}: Hmm?
                 </div>
 
                 <div class="col-6">
-                  HERO IMAGE
+                  <img src = {{hero_png}} width="200" height="200">
                 </div>
 
                 <div class="col-6">
-                  JOKE PART 3
+                  {{hero}}: {{punchline}}
                 </div>
 
               </div>
@@ -111,13 +111,13 @@ time spent:  hrs
               <div class="row row-cols-auto gy-4 gx-4">
 
                 <div class="col">
-                  <a href="/hero/1" <!-- CHANGE TO HERO ID -->
+                  <a href="/hero/{{hero_id}}" <!-- CHANGE TO HERO ID -->
                     <div class="card" style="width: 18vw;">
-                      <img src="..." class="card-img-top">
+                      <img src="{{hero_png}}" class="card-img-top">
                       <div class="card-body">
                         <p class="card-text">
                           <!-- MAKE THIS INFO FOR HERO -->
-                          HERO INFO HERE
+                          {{hero_info}}
                         </p>
                       </div>
                     </div>
@@ -125,13 +125,13 @@ time spent:  hrs
                 </div>
 
                 <div class="col">
-                  <a href="/pokemon/1" <!-- CHANGE TO POKEMON ID -->
+                  <a href="/pokemon/{{poke_id}}" <!-- CHANGE TO POKEMON ID -->
                     <div class="card" style="width: 18vw;">
-                      <img src="..." class="card-img-top">
+                      <img src="{{poke_png}}" class="card-img-top">
                       <div class="card-body">
                         <p class="card-text">
                           <!-- MAKE THIS INFO FOR POKEMON -->
-                          POKEMON INFO HERE
+                          {{poke_info}}
                         </p>
                       </div>
                     </div>

@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, request, redirect, url_for
 import requests, os, json
 from database import *
 from characterdb import *
+import random
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -121,7 +122,20 @@ def qruserprofile(user):
 
 @app.route('/joke')
 def joke():
-    return render_template('view_joke.html')
+    jokeid = random.randint(0, 250)
+    joke = get_joke_from_id(jokeid)
+    punchline = get_punchline_from_id(jokeid)
+
+    hero_id = random.choice(get_all_hero_id())
+    hero = get_hero_name(hero_id)
+    hero_img = get_hero_image(hero_id)
+    hero_bio = get_hero_bio(hero_id)
+
+    poke_id = random.choice(get_all_pokemon_id())
+    poke = get_pokemon_name(poke_id)
+    poke_img = get_pokemon_image(poke_id)
+    poke_bio = get_pokemon_bio(poke_id)
+    return render_template('view_joke.html', setup=joke, punchline=punchline, hero=hero, hero_id = hero_id, hero_png=hero_img, hero_info = hero_bio, poke=poke, poke_id = poke_id, poke_png=poke_img, poke_info=poke_bio)
 
 @app.route('/search', methods = ['GET', 'POST'])
 def search():
