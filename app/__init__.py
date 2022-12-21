@@ -121,23 +121,33 @@ def qruserprofile(user):
         edit = True
     return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), edit = edit, pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
 
-@app.route('/joke')
+@app.route('/joke', methods = ['GET', 'POST'])
 def joke():
+    if 'username' not in session:
+        return redirect('/')
     jokeid = random.randint(0, 250)
+    return redirect(f"/joke/{jokeid}")
+@app.route('/joke/<jokeid>', methods = ['GET', 'POST'])
+def joke2(jokeid):
+    if 'username' not in session:
+        return redirect('/')
     joke = get_joke_from_id(jokeid)
     punchline = get_punchline_from_id(jokeid)
-
     hero_id = random.choice(get_all_hero_id())
     hero = get_hero_name(hero_id)
     hero_img = get_hero_image(hero_id)
     hero_bio = get_hero_bio(hero_id)
-
     poke_id = random.choice(get_all_pokemon_id())
     poke = get_pokemon_name(poke_id)
     poke_img = get_pokemon_image(poke_id)
     poke_bio = get_pokemon_bio(poke_id)
-    return render_template('view_joke.html', setup=joke, punchline=punchline, hero=hero, hero_id = hero_id, hero_png=hero_img, hero_info = hero_bio, poke=poke, poke_id = poke_id, poke_png=poke_img, poke_info=poke_bio)
-
+    favorited = (joke_in_user(session['username'], jokeid))
+    print(favorited)
+    if request.method == 'POST':
+        if request.form.get("favorite") == "favorite":
+            favorited = True
+            print(add_joke_to_user(session['username'], jokeid))
+    return render_template('view_joke.html', favorited = favorited, setup=joke, punchline=punchline, jokeid = jokeid, hero=hero, hero_id = hero_id, hero_png=hero_img, hero_info = hero_bio, poke=poke, poke_id = poke_id, poke_png=poke_img, poke_info=poke_bio)
 @app.route('/search', methods = ['GET', 'POST'])
 def search():
     # print("a")

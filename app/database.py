@@ -65,15 +65,17 @@ def get_list_of_saved_jokes(username):
     for i in jokes:
         returnlist.append(i[0])
     return returnlist
-
+def joke_in_user(username, joke_id):
+        return(joke_id in get_list_of_saved_jokes(username))
 # returns true if joke was successfully favorited by user
 def add_joke_to_user(username, joke_id):
     db = sqlite3.connect("user.db", check_same_thread=False)
     c = db.cursor()
-    if select_from("user.db", "jokes", "joke_id", joke_id, "joke_id") != 0:
-        if joke_id not in get_list_of_saved_jokes(username):
-            c.execute(f"UPDATE users SET favorite = '{joke_id}' WHERE username = '{username}'")
-            return True
+    if joke_id not in get_list_of_saved_jokes(username):
+        c.execute(f"UPDATE users SET favorite = '{joke_id}' WHERE username = '{username}'")
+        db.commit()
+        return True
+    db.commit()
     return False
 
 def get_email(username):
