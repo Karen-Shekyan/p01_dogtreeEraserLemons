@@ -281,3 +281,8 @@ kevinL -- 2022-12-20 10:00 PM
  - displayed favorite on profile and home
  - ability to disable button after saving
  ==============================================================
+mahirR -- 2022-12-20 10:50 PM
+--------------------------------------------------------------
+ - added methods to the database
+  - methods were used to edit bio and username
+ ==============================================================
