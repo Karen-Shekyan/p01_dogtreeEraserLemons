@@ -61,13 +61,14 @@ def login(username, password):
 def get_list_of_saved_jokes(username):
     db = sqlite3.connect("user.db", check_same_thread=False)
     c = db.cursor()
-    jokes = list(c.execute(f"SELECT favorite FROM users WHERE username = '{username}'").fetchall())
-    returnlist = []
-    if jokes[0][0] == '':
+    jokes = (c.execute(f"SELECT favorite FROM users WHERE username = '{username}'").fetchall())
+    jokes = jokes[0][0]
+    if jokes == '':
         return []
-    for i in jokes:
-        returnlist.append(i[0])
-    return returnlist
+    jokes = jokes.split(",")
+    if jokes[0] == '':
+        jokes = jokes[1:]
+    return jokes
 
 def joke_in_user(username, joke_id):
     return(joke_id in get_list_of_saved_jokes(username))
@@ -76,10 +77,11 @@ def joke_in_user(username, joke_id):
 def add_joke_to_user(username, joke_id):
     db = sqlite3.connect("user.db", check_same_thread=False)
     c = db.cursor()
-    jokes = list(c.execute(f"SELECT favorite FROM users WHERE username = '{username}'").fetchall())
+    jokes = get_list_of_saved_jokes(username)
+    jokes = ",".join(jokes)
     if joke_id not in get_list_of_saved_jokes(username):
-        jokes.append(joke_id)
-        c.execute(f"UPDATE users SET favorite = '{jokes}' WHERE username = '{username}'")
+        replacement = jokes + f",{joke_id}"
+        c.execute(f"UPDATE users SET favorite = '{replacement}' WHERE username = '{username}'")
         db.commit()
         return True
     db.commit()
