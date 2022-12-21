@@ -9,7 +9,7 @@
     <link rel="stylesheet" Type="text/css" href="../static/css/style.css">
   </head>
   <body>
-    <nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <nav class="navbar navbar-dark sticky-top navbar-expand-lg bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand" href="/home">
           <!-- CURRENT page title -->
@@ -27,7 +27,7 @@
               <div class="autocomplete">
                 <input id="myInput" class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
               </div>
-              <input class="btn btn-outline-success" type="submit" value="Search">
+              <input class="btn btn-outline-light searchBtn" type="submit" value="Search">
             </form>
             <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
             <script>
@@ -38,11 +38,18 @@
         </div>
       </div>
     </nav>
-    
-    <p>A project created by Team <i>Dogtree Eraser Lemons</i></p>
-    <p>Roster: Karen Shekyan, Kevin Liu, Mahir Riki, Ian Jiang</p>
-    <br>
 
-    <p> Character does not Exist</p>
+    <div class="container text-center">
+      <h2> PBJ </h2>
+      <p>A project created by Team <i>Dogtree Eraser Lemons</i></p>
+      <img src="https://archives.bulbagarden.net/media/upload/e/e9/302Sableye-Mega.png" width="400" style="background-color: #B8BDFB">
+      <p>
+        Sableye stole this page...
+        <div class="a" style="color: #9A0000;">
+          <i> Character not found </i>
+        </div>
+      </p>
+    </div>
+
 
 </html>
