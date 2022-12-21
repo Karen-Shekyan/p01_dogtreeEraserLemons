@@ -16,6 +16,7 @@ def log_in():
 @app.route('/home')
 def home():
     if (session):
+        print(get_list_of_saved_jokes(session['username']))
         favs = [(get_joke_from_id(jokeid)[0:25] + "...", jokeid) for jokeid in get_list_of_saved_jokes(session['username'])]
         count = len(favs) - 1
         index = 0
