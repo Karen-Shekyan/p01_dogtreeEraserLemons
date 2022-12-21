@@ -247,7 +247,11 @@ karenS -- 2022-12-19 4:00 PM
     - similar layout to heroes, will make types more clear w/
       css later
   - added favorite button to jokes
-
+kevinL -- 2022-12-19 6:00 PM
+--------------------------------------------------------------
+ - fixed bugs relating to search
+ - fixed bugs relating to displaying information
+==============================================================
 ianJ --2022-12-19 7:40 PM
 --------------------------------------------------------------
   - added things to the /joke route
@@ -270,3 +274,10 @@ ianJ --2022-12-20 9:50 PM
     - user can edit username and bio
   - added deactivating account feature
 ==============================================================
+kevinL -- 2022-12-20 10:00 PM
+--------------------------------------------------------------
+ - added the favorite button
+ - gave favorite button ability to connect to db
+ - displayed favorite on profile and home
+ - ability to disable button after saving
+ ==============================================================
