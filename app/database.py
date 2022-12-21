@@ -5,7 +5,7 @@ global c
 c = db.cursor()
 
 # making tables
-c.execute("CREATE TABLE if not exists users(username TEXT, password TEXT, email TEXT, favorite TEXT)")
+c.execute("CREATE TABLE if not exists users(username TEXT, password TEXT, email TEXT, bio TEXT, favorite TEXT)")
 
 
 # general method that can be used to get data easier
@@ -34,7 +34,7 @@ def signup(username, password, email):
     if(username_in_system(username)):
         return False
     else:
-        c.execute("INSERT INTO users VALUES (?,?,?,'')", (username, password, email))
+        c.execute("INSERT INTO users VALUES (?,?,?,'','')", (username, password, email))
     db.commit()
     return True #save changes
 
@@ -44,6 +44,7 @@ def remove_user(username):
     c = db.cursor()
     try:
         c.execute(f'DELETE FROM users WHERE username = "{username}"')
+        db.commit()
         return True
     except:
         return False
@@ -60,21 +61,27 @@ def login(username, password):
 def get_list_of_saved_jokes(username):
     db = sqlite3.connect("user.db", check_same_thread=False)
     c = db.cursor()
-    jokes = list(c.execute(f"SELECT favorite FROM users WHERE username = '{username}'").fetchall())
-    returnlist = []
-    if jokes[0][0] == '':
+    jokes = (c.execute(f"SELECT favorite FROM users WHERE username = '{username}'").fetchall())
+    jokes = jokes[0][0]
+    if jokes == '':
         return []
-    for i in jokes:
-        returnlist.append(i[0])
-    return returnlist
+    jokes = jokes.split(",")
+    if jokes[0] == '':
+        jokes = jokes[1:]
+    return jokes
+
 def joke_in_user(username, joke_id):
-        return(joke_id in get_list_of_saved_jokes(username))
+    return(joke_id in get_list_of_saved_jokes(username))
+
 # returns true if joke was successfully favorited by user
 def add_joke_to_user(username, joke_id):
     db = sqlite3.connect("user.db", check_same_thread=False)
     c = db.cursor()
+    jokes = get_list_of_saved_jokes(username)
+    jokes = ",".join(jokes)
     if joke_id not in get_list_of_saved_jokes(username):
-        c.execute(f"UPDATE users SET favorite = '{joke_id}' WHERE username = '{username}'")
+        replacement = jokes + f",{joke_id}"
+        c.execute(f"UPDATE users SET favorite = '{replacement}' WHERE username = '{username}'")
         db.commit()
         return True
     db.commit()
@@ -85,6 +92,25 @@ def get_email(username):
     c = db.cursor()
     if (select_from("user.db", "users", "username", username, "username") != 0):
         return select_from("user.db", "users", "email", username, "username")
+    
+def edit_bio(username, bio):
+    db = sqlite3.connect("user.db", check_same_thread=False)
+    c = db.cursor()
+    c.execute(f"UPDATE users SET bio = '{bio}' WHERE username = '{username}'")
+    db.commit()
+    
+def get_bio(username):
+    db = sqlite3.connect("user.db", check_same_thread=False)
+    c = db.cursor()
+    if (select_from("user.db", "users", "username", username, "username") != 0):
+        return select_from("user.db", "users", "bio", username, "username")
+    return "No bio"
+
+def edit_username(old_username, username):
+    db = sqlite3.connect("user.db", check_same_thread=False)
+    c = db.cursor()
+    c.execute(f"UPDATE users SET username = '{username}' WHERE username = '{old_username}'")
+    db.commit()
 
 db.commit()
 db.close()
