@@ -262,3 +262,11 @@ karenS -- 2022-12-20 4:00 PM
   - polished pokemon page
   - made email display on profile page
   - JOKE PAGE DEBUGGED. FINALLY.
+==============================================================
+
+ianJ --2022-12-20 9:50 PM
+--------------------------------------------------------------
+  - added editing functionality to profile
+    - user can edit username and bio
+  - added deactivating account feature
+==============================================================

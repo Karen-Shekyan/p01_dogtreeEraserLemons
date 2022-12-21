@@ -60,10 +60,24 @@ time spent:  hrs
       <div class="row g-2 text-left">
         <div class="col-6 u_info">
           <div class="p-3 border-0">
-            <b>Username:</b> {{username}} <br>
-            <b>Email:</b> {{email}} <br>
-            {% if edit %}
-              <button class="btn btn-outline-success" type="submit">Edit</button>
+            {% if editing %}
+              <form action="/edit" method="POST">
+              <b>Username:</b>  <input type="text" name="username" value = "{{username}}"> </input> <br>
+              <b>Email:</b> {{email}} <br>
+              <b>Bio:</b> <input type="text" name="bio" value="{{bio}}"> </input> <br>
+              <input type="submit" value="Save" class="btn btn-outline-success" role="button"> </input> 
+              </form>
+              <a class="btn btn-outline-danger" role="button" href="/deactivate">Deactivate Account</a>
+            {% elif edit %}
+              <b>Username:</b> {{username}} <br>
+              <b>Email:</b> {{email}} <br>
+              <b>Bio:</b> {{bio}} <br>
+              <a class="btn btn-outline-success" role="button" href="profile/edit">Edit</a>
+            {% else %}
+              <b>Username:</b> {{username}} <br>
+              <b>Email:</b> {{email}} <br>
+              <b>Bio:</b> {{bio}}
+
             {% endif %}
               <br><br>
 
