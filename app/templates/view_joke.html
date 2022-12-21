@@ -18,7 +18,7 @@ time spent:  hrs
 
   <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <nav class="navbar navbar-dark sticky-top navbar-expand-lg bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand" href="/home">
           <!-- CURRENT page title -->
@@ -36,7 +36,7 @@ time spent:  hrs
               <div class="autocomplete">
                 <input id="myInput" class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
               </div>
-              <input class="btn btn-outline-success" type="submit" value="Search">
+              <input class="btn btn-outline-light" type="submit" value="Search">
             </form>
             <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
             <script>
@@ -61,7 +61,7 @@ time spent:  hrs
             <div class="container text-center">
               <div class="row">
 
-                <div class="col-md">
+                <div class="col-md framed">
                   <img src={{hero_png}} style="width:20vw; height:20vw;">
                 </div>
 
@@ -74,7 +74,7 @@ time spent:  hrs
               <div class="row">
 
                 <div class="col-md">
-                <img src={{poke_png}} style="width:20vw; height:20vw;">
+                  <img src={{poke_png}} class="poke framed">
                 </div>
 
                 <div class="col-md joke">
@@ -86,7 +86,7 @@ time spent:  hrs
               <div class="row">
 
                 <div class="col-md">
-                  <img src = {{hero_png}} style="width:20vw; height:20vw;">
+                  <img src = {{hero_png}} class="framed" style="width:20vw; height:20vw;">
                 </div>
 
                 <div class="col-md joke">
@@ -103,12 +103,10 @@ time spent:  hrs
           <div class="container text-center">
             <div class="row">
               <div class="col">
-                <br>
-                <br>
                 <form method = "POST" action="/joke/{{jokeid}}">
-                  <button class="btn btn-outline-success" type="submit" name = "favorite" value ="favorite" {%if favorited%} disabled {%endif%}href=".">Favorite</button>
-                  
+                  <button class="btn btn-primary" type="submit" name = "favorite" value ="favorite" {%if favorited%} disabled {%endif%}href=".">Favorite</button>
               </div>
+            </div>
           </div>
         </div>
 
@@ -129,7 +127,8 @@ KNOW WHY, SO LEAVE THEM WHERE THEY ARE. PAIN.
                       <img src="{{hero_png}}" class="card-img-top" width="200" height="200">
                       <div class="card-body">
                         <p class="card-text">
-                          {{hero_info}}
+                          {% set hero_info = hero_info[:150] %}
+                          {{hero_info}}...
                         </p>
                       </div>
                     </div>
@@ -142,7 +141,8 @@ KNOW WHY, SO LEAVE THEM WHERE THEY ARE. PAIN.
                       <img src="{{poke_png}}" class="card-img-top" width="200" height="200">
                       <div class="card-body">
                         <p class="card-text">
-                          {{poke_info}}
+                          {% set poke_info = poke_info[:150] %}
+                          {{poke_info}}...
                         </p>
                       </div>
                     </div>

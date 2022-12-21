@@ -18,7 +18,7 @@ time spent:  hrs
   </head>
   <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <nav class="navbar navbar-dark sticky-top navbar-expand-lg bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand" href="/home">
           <!-- CURRENT page title -->
@@ -36,7 +36,7 @@ time spent:  hrs
               <div class="autocomplete">
                 <input id="myInput" class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
               </div>
-              <input class="btn btn-outline-success" type="submit" value="Search">
+              <input class="btn btn-outline-light" type="submit" value="Search">
             </form>
             <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
             <script>
@@ -49,13 +49,11 @@ time spent:  hrs
     </nav>
 
 
-
     <div class="container text-left">
-      <div class="row text-center">
+      <div class="row text-left">
         <div class="col">
-          <div class="p-3 title border-0 bg-transparent">
-            <h2> {{title|title}} </h2>
-          </div>
+          <br>
+          <h2> {{title|title}} </h2> <br>
         </div>
       </div>
       <div class="row">
@@ -72,27 +70,39 @@ time spent:  hrs
               <h5> HP </h5>
               <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["hp"]|int / 255 * 100}}%" aria-valuenow="{{stats["hp"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["hp"]}} </div>
+                <div class="progress-bar bg-secondary" role="progressbar" aria-label="Basic example" style="width: {{100 - (stats["hp"]|int / 255 * 100)|int}}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"> </div>
               </div>
+
               <h5> Attack </h5>
               <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["attack"]|int / 255 * 100}}%" aria-valuenow="{{stats["attack"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["attack"]}} </div>
+                <div class="progress-bar bg-secondary" role="progressbar" aria-label="Basic example" style="width: {{100 - (stats["attack"]|int / 255 * 100)|int}}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"> </div>
               </div>
+
               <h5> Defense </h5>
               <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["defense"]|int / 255 * 100}}%" aria-valuenow="{{stats["defense"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["defense"]}} </div>
+                <div class="progress-bar bg-secondary" role="progressbar" aria-label="Basic example" style="width: {{100 - (stats["defense"]|int / 255 * 100)|int}}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"> </div>
               </div>
+
               <h5> Sp. Atk </h5>
               <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["special-attack"]|int / 255 * 100}}%" aria-valuenow="{{stats["special-attack"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["special-attack"]}} </div>
+                <div class="progress-bar bg-secondary" role="progressbar" aria-label="Basic example" style="width: {{100 - (stats["special-attack"]|int / 255 * 100)|int}}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"> </div>
               </div>
+
               <h5> Sp. Def </h5>
               <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-label="power" style="width: {{stats["special-defense"]|int / 255 * 100}}%" aria-valuenow="{{stats["special-defense"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["special-defense"]}} </div>
+                <div class="progress-bar bg-secondary" role="progressbar" aria-label="Basic example" style="width: {{100 - (stats["special-defense"]|int / 255 * 100)|int}}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"> </div>
               </div>
+
               <h5> Speed </h5>
               <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: {{stats["speed"]|int / 255 * 100}}%" aria-valuenow="{{stats["speed"]}}" aria-valuemin="0" aria-valuemax="255"> {{stats["speed"]}} </div>
+                <div class="progress-bar bg-secondary" role="progressbar" aria-label="Basic example" style="width: {{100 - (stats["speed"]|int / 255 * 100)|int}}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"> </div>
               </div>
+
               <h5> Total: {{stats["hp"]|int + stats["attack"]|int + stats["defense"]|int + stats["special-attack"]|int + stats["special-defense"]|int + stats["speed"]|int}} </h5>
               <br>
             </div>

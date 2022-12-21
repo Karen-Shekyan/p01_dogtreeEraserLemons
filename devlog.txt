@@ -262,3 +262,11 @@ karenS -- 2022-12-20 4:00 PM
   - polished pokemon page
   - made email display on profile page
   - JOKE PAGE DEBUGGED. FINALLY.
+
+karenS -- 2022-12-20 11:00 PM
+--------------------------------------------------------------
+  - polished all of da pages w/ css
+    - color scheme consistent, fancy displaying
+    - very blue
+  - put ad on home page (Mahir's design)
+  - made error page better
