@@ -20,9 +20,9 @@ time spent:  hrs
 
     <nav class="navbar sticky-top navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/login">
+        <a class="navbar-brand" href="/home">
           <!-- CURRENT page title -->
-          <img src="">Home
+          <img src=""> Home
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,15 +32,44 @@ time spent:  hrs
             <!-- <a class="nav-link active" aria-current="page" href="/home">Home</a> -->
             <a class="nav-link" href="/profile">Profile</a>
             <a class="nav-link" href="/joke">Joke</a>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+            <form autocomplete="off" action="/search" method="POST" class="d-flex">
+              <div class="autocomplete">
+                <input id="myInput" class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
+              </div>
+              <input class="btn btn-outline-success" type="submit" value="Search">
             </form>
+            <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
+            <script>
+              autocomplete(document.getElementById("myInput"), {{heroes|safe}}, {{ heroesid|safe }}, {{pokemons|safe}}, {{pokeid|safe}}); //passing in the list of heroes and their ids
+            </script>
             <a class="nav-link" href="/logout">Logout</a>
           </div>
         </div>
       </div>
     </nav>
+
+
+    <div class="container text-center">
+      <div class="row g-2">
+        <div class="col-12">
+          <div class="p-3 title border-0 bg-transparent">
+            <h2> PBJ </h2>
+            <h4> (Pokemon Bero Joke Device) </h4>
+            <p>A project created by Team <i>Dogtree Eraser Lemons</i>
+            <br>Roster: Karen Shekyan, Kevin Liu, Mahir Riki, Ian Jiang</p>
+          </div>
+        </div>
+        <div class="col-6 ad">
+          <div class="p-3 border-0"> AD SPACE </div>
+        </div>
+        <div class="col-6 recent">
+          <div class="p-3 border-0"> Recently favorited </div>
+          {% for elements in favorites%}
+          <a href = /joke/{{elements[1]}}> {{elements[0]}}</a>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
 
   </body>
 
