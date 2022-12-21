@@ -289,4 +289,5 @@ karenS -- 2022-12-20 11:00 PM
     - very blue
   - put ad on home page (Mahir's design)
   - made error page better
+  - polished profile edit
  ==============================================================

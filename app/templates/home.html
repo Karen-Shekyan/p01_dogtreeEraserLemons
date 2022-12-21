@@ -36,7 +36,7 @@ time spent:  hrs
               <div class="autocomplete">
                 <input id="myInput" class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
               </div>
-              <input class="btn btn-outline-light" type="submit" value="Search">
+              <input class="btn btn-outline-light searchBtn" type="submit" value="Search">
             </form>
             <script src="{{url_for('static', filename='js/autocomplete.js')}}"></script>
             <script>
@@ -63,10 +63,10 @@ time spent:  hrs
           <img src="../static/images/ad.png" style="width:45vw;">
         </div>
         <div class="col-6 recent">
-          <div class="p-3 border-0"> Recently favorited </div>
-          {% for elements in favorites%}
-          <a href = /joke/{{elements[1]}}> {{elements[0]}}</a>
-          <br>
+          <div class="p-3 border-0"> <h4> Recently favorited </h4> </div>
+          {% for elements in favorites %}
+            <a href = /joke/{{elements[1]}}> {{elements[0]}}</a>
+            <br>
           {%endfor%}
         </div>
       </div>
