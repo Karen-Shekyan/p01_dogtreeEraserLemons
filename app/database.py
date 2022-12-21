@@ -5,7 +5,7 @@ global c
 c = db.cursor()
 
 # making tables
-c.execute("CREATE TABLE if not exists users(username TEXT, password TEXT, email TEXT, favorite TEXT)")
+c.execute("CREATE TABLE if not exists users(username TEXT, password TEXT, email TEXT, bio TEXT, favorite TEXT)")
 
 
 # general method that can be used to get data easier
@@ -44,6 +44,7 @@ def remove_user(username):
     c = db.cursor()
     try:
         c.execute(f'DELETE FROM users WHERE username = "{username}"')
+        db.commit()
         return True
     except:
         return False
@@ -67,14 +68,18 @@ def get_list_of_saved_jokes(username):
     for i in jokes:
         returnlist.append(i[0])
     return returnlist
+
 def joke_in_user(username, joke_id):
-        return(joke_id in get_list_of_saved_jokes(username))
+    return(joke_id in get_list_of_saved_jokes(username))
+
 # returns true if joke was successfully favorited by user
 def add_joke_to_user(username, joke_id):
     db = sqlite3.connect("user.db", check_same_thread=False)
     c = db.cursor()
+    jokes = list(c.execute(f"SELECT favorite FROM users WHERE username = '{username}'").fetchall())
     if joke_id not in get_list_of_saved_jokes(username):
-        c.execute(f"UPDATE users SET favorite = '{joke_id}' WHERE username = '{username}'")
+        jokes.append(joke_id)
+        c.execute(f"UPDATE users SET favorite = '{jokes}' WHERE username = '{username}'")
         db.commit()
         return True
     db.commit()
@@ -85,6 +90,25 @@ def get_email(username):
     c = db.cursor()
     if (select_from("user.db", "users", "username", username, "username") != 0):
         return select_from("user.db", "users", "email", username, "username")
+    
+def edit_bio(username, bio):
+    db = sqlite3.connect("user.db", check_same_thread=False)
+    c = db.cursor()
+    c.execute(f"UPDATE users SET bio = '{bio}' WHERE username = '{username}'")
+    db.commit()
+    
+def get_bio(username):
+    db = sqlite3.connect("user.db", check_same_thread=False)
+    c = db.cursor()
+    if (select_from("user.db", "users", "username", username, "username") != 0):
+        return select_from("user.db", "users", "bio", username, "username")
+    return "No bio"
+
+def edit_username(old_username, username):
+    db = sqlite3.connect("user.db", check_same_thread=False)
+    c = db.cursor()
+    c.execute(f"UPDATE users SET username = '{username}' WHERE username = '{old_username}'")
+    db.commit()
 
 db.commit()
 db.close()
