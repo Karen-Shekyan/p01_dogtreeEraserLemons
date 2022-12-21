@@ -36,7 +36,7 @@ def hero_info(hero_id):
         weight = "and weighing " + weight + " "
     eyeColor = data["appearance"]["eyeColor"]
     hairColor = data["appearance"]["hairColor"]
-    if hairColor != "No Hair":
+    if not(hairColor == "No Hair"):
         hairColor = hairColor + " hair"
     if eyeColor == "-":
         eyeColor = "No"
@@ -50,7 +50,17 @@ def hero_info(hero_id):
         groupAffiliation = "as a " + groupAffiliation
     if alignedment =="-":
         alignedment = "neutral"
-    bio = f'{FullName} or {name} is a {alignedment} aligned character {placeOfBirth}. {name} has the appearance of a {race}{gender} {height} {weight}with {eyeColor} eyes and {hairColor}. {pronoun} works as a {occupation}. {pronoun} first appeared in {firstAppearance} by {publisher}. {pronoun} is affiliated {groupAffiliation}.'
+    if occupation == "-":
+        occupation = "does not have another job"
+    else:
+        occupation = f"works as a {occupation}"
+    if firstAppearance == "-":
+        firstAppearance = "a comic"
+    if not(FullName == ""):
+        print("a")
+        print(FullName)
+        FullName = FullName + " or "
+    bio = f'{FullName} {name} is a {alignedment} aligned character {placeOfBirth}. {name} has the appearance of a {race}{gender} {height} {weight}with {eyeColor} eyes and {hairColor}. {pronoun} {occupation}. {pronoun} first appeared in {firstAppearance} by {publisher}. {pronoun} is affiliated {groupAffiliation}.'
     image = data["images"]["md"]
     return [name, powerstats, bio, image]
 
