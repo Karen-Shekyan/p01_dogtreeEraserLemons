@@ -122,7 +122,7 @@ def userprofile():
     if 'username' not in session:
         return redirect('http://127.0.0.1:5000/')
     favs = [(get_joke_from_id(jokeid)[0:25] + "...", jokeid) for jokeid in get_list_of_saved_jokes(session['username'])]
-    return render_template('user_profile.html', username=session['username'], email=get_email(session['username']), favorites=favs, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), edit=True)
+    return render_template('user_profile.html', username=session['username'], email=get_email(session['username']), favorites=favs, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), edit=True, bio=get_bio(session['username']))
 
 @app.route('/profile/<user>')
 def qruserprofile(user):
@@ -130,7 +130,39 @@ def qruserprofile(user):
     if(session['username'] == user):
         edit = True
     favs = [([get_joke_from_id(jokeid)[0:25] + "...", jokeid]) for jokeid in get_list_of_saved_jokes(user)]
-    return render_template('user_profile.html', username=user, favorites=favs, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), edit = edit, pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
+    return render_template('user_profile.html', username=user, favorites=favs, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), edit = edit, pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), email=get_email(user), bio=get_bio(user))
+
+@app.route('/profile/edit')
+def edit():
+    if 'username' not in session:
+        return redirect('http://127.0.0.1:5000/')
+    favs = [([get_joke_from_id(jokeid)[0:25] + "...", jokeid]) for jokeid in get_list_of_saved_jokes(session['username'])]
+    return render_template('user_profile.html', username=session['username'], favorites=favs, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), edit=True, editing=True, email=get_email(session['username']), bio=get_bio(session['username']))
+
+@app.route('/edit', methods = ['POST', 'GET'])
+def update_edits():
+    if 'username' not in session:
+        return redirect('http://127.0.0.1:5000/')
+    if request.method == 'POST':
+        username = request.form["username"]
+        bio = request.form["bio"]
+    if request.method == 'GET':
+        username = request.args["username"]
+        bio = request.args["bio"]
+
+    edit_username(session['username'], username) # update username
+    session['username'] = username
+    edit_bio(session['username'], bio) # update bio
+    favs = [([get_joke_from_id(jokeid)[0:25] + "...", jokeid]) for jokeid in get_list_of_saved_jokes(session['username'])]
+    return render_template('user_profile.html', username=session['username'], favorites=favs, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), edit=True, editing=False, email=get_email(session['username']), bio=get_bio(session['username']) )
+
+@app.route('/deactivate')
+def deactivate():
+    if 'username' not in session:
+        return redirect('http://127.0.0.1:5000/')
+    print(remove_user(session['username']))
+    session.pop('username')
+    return redirect('http://127.0.0.1:5000/')
 
 @app.route('/joke', methods = ['GET', 'POST'])
 def joke():

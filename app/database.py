@@ -34,7 +34,7 @@ def signup(username, password, email):
     if(username_in_system(username)):
         return False
     else:
-        c.execute("INSERT INTO users VALUES (?,?,?,'')", (username, password, email))
+        c.execute("INSERT INTO users VALUES (?,?,?,'','')", (username, password, email))
     db.commit()
     return True #save changes
 
