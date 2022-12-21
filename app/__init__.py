@@ -126,9 +126,14 @@ def userprofile():
 
 @app.route('/profile/<user>')
 def qruserprofile(user):
+    if 'username' not in session:
+        return redirect('http://127.0.0.1:5000/')
     edit = False
+    if not(username_in_system(user)):
+        return render_template('noExistC.html')
     if(session['username'] == user):
         edit = True
+        return redirect("/profile")
     favs = [([get_joke_from_id(jokeid)[0:25] + "...", jokeid]) for jokeid in get_list_of_saved_jokes(user)]
     return render_template('user_profile.html', username=user, favorites=favs, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), edit = edit, pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), email=get_email(user), bio=get_bio(user))
 
