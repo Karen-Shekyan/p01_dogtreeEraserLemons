@@ -62,6 +62,8 @@ def get_list_of_saved_jokes(username):
     c = db.cursor()
     jokes = list(c.execute(f"SELECT favorite FROM users WHERE username = '{username}'").fetchall())
     returnlist = []
+    if jokes[0][0] == '':
+        return []
     for i in jokes:
         returnlist.append(i[0])
     return returnlist
