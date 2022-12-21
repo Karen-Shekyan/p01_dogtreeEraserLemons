@@ -6,10 +6,6 @@ body {
   background-color: #8393F7;
 }
 
-.progress {
-  $progress-bar-bg: #D7D5E1;
-}
-
 .container {
   background-color: #B8BDFB;
   margin-top: 30px;
