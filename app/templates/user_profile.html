@@ -74,7 +74,9 @@ time spent:  hrs
           <div class="p-3 border-0">
             <b> Favorites: </b>
             <div class="favs">
-              {{favorites}}
+              {% for elements in favorites%}
+                <a href = /joke/{{elements[1]}}> {{elements[0]}}</a>
+                {%endfor%}
             </div>
           </div>
         </div>

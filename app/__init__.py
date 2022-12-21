@@ -10,13 +10,21 @@ app.secret_key = os.urandom(32)
 @app.route('/')
 def log_in():
     if 'username' in session:
-        return render_template('home.html')
+        return redirect('/home')
     return render_template('login.html')
 
 @app.route('/home')
 def home():
     if (session):
-         return render_template('home.html', heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
+        favs = [(get_joke_from_id(jokeid)[0:25] + "...", jokeid) for jokeid in get_list_of_saved_jokes(session['username'])]
+        count = len(favs) - 1
+        index = 0
+        favs2 = []
+        while((count > -1) and index < 5):
+            favs2.append(favs[count])
+            count-=1
+            index+=1
+        return render_template('home.html', heroes = get_all_ordered_heroes(), favorites = favs2, heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
     else:
         return redirect('/')
 
@@ -112,14 +120,16 @@ def logout():
 def userprofile():
     if 'username' not in session:
         return redirect('http://127.0.0.1:5000/')
-    return render_template('user_profile.html', username=session['username'], email=get_email(session['username']), favorites=get_list_of_saved_jokes(session['username']), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), edit=True)
+    favs = [(get_joke_from_id(jokeid)[0:25] + "...", jokeid) for jokeid in get_list_of_saved_jokes(session['username'])]
+    return render_template('user_profile.html', username=session['username'], email=get_email(session['username']), favorites=favs, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon(), edit=True)
 
 @app.route('/profile/<user>')
 def qruserprofile(user):
     edit = False
     if(session['username'] == user):
         edit = True
-    return render_template('user_profile.html', username=user, favorites=get_list_of_saved_jokes(user), heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), edit = edit, pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
+    favs = [([get_joke_from_id(jokeid)[0:25] + "...", jokeid]) for jokeid in get_list_of_saved_jokes(user)]
+    return render_template('user_profile.html', username=user, favorites=favs, heroes = get_all_ordered_heroes(), heroesid = get_all_hero_id(), edit = edit, pokeid = get_all_pokemon_id(), pokemons = get_all_ordered_pokemon())
 
 @app.route('/joke', methods = ['GET', 'POST'])
 def joke():

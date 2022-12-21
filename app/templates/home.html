@@ -64,6 +64,9 @@ time spent:  hrs
         </div>
         <div class="col-6 recent">
           <div class="p-3 border-0"> Recently favorited </div>
+          {% for elements in favorites%}
+          <a href = /joke/{{elements[1]}}> {{elements[0]}}</a>
+          {%endfor%}
         </div>
       </div>
     </div>
