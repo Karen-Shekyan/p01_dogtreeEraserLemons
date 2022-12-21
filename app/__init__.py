@@ -129,6 +129,8 @@ def qruserprofile(user):
     if 'username' not in session:
         return redirect('http://127.0.0.1:5000/')
     edit = False
+    if not(username_in_system(user)):
+        return render_template('noExistC.html')
     if(session['username'] == user):
         edit = True
         return redirect("/profile")
